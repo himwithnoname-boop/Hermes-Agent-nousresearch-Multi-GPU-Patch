@@ -1,0 +1,6 @@
+Hermes-Agent (nousresearch) - Multi GPU Patch
+
+Community source modifications for NousResearch/hermes-agent.
+Upstream baseline: v0.22.3, 5b147ab036d6d19131bff8d20701b5001eab844a.
+Upstream copyright and MIT license are retained in LICENSE.
+This project is independent of and not endorsed by Nous Research.

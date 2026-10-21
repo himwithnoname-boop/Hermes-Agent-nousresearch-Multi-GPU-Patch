@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "release": "v0.22.3",
+  "upstreamCommit": "5b147ab036d6d19131bff8d20701b5001eab844a",
+  "sourceFiles": 91,
+  "validation": {
+    "generationRatePythonPassed": 103,
+    "upstreamSkipped": 4,
+    "desktopPassed": 13,
+    "staticChecksPassed": 12,
+    "stockInstallerSelection": true,
+    "sourceBackups": true,
+    "repeatApplyAndReceipt": true,
+    "externalEditRefused": true,
+    "patchApplySnapshotAndReverse": true
+  },
+  "nativeInferenceBenchmark": {
+    "performed": false,
+    "speedupClaimed": false,
+    "memorySavingsClaimed": false
+  },
+  "patchSha256": "94bbfbab9cebe6f6c9b45049026d14c772fcce93bed1feaf1b885408325635c3",
+  "sourceTree": "1381e611384754f663ba740c36d66c36d98449fe"
+}
