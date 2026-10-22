@@ -15,7 +15,7 @@ The engine is **not included** in this repository, source ZIP or patch. The offi
 
 ## Why a separate setup step is needed
 
-The pinned Hermes v0.22.3 baseline uses **`b11671` in `pm/lock.json`**. This source patch deliberately does not silently rewrite dependency pins. Runtime boot uses an installed PM-managed engine and does not download another version. A normal Local Models install follows the current PM lock, so leaving that lock at `b11671` does not obtain `b11706`.
+Both supported Hermes baselines (v0.22.3 and v0.22.4) use **`b11671` in `pm/lock.json`**. This source patch deliberately does not silently rewrite dependency pins. Runtime boot uses an installed PM-managed engine and does not download another version. A normal Local Models install follows the current PM lock, so leaving that lock at `b11671` does not obtain `b11706`.
 
 Downloading an archive or putting a different `llama-server` on `PATH` is not sufficient to switch the managed Hermes engine. Do not rename a different build or edit its recorded tag to bypass the compatibility check.
 

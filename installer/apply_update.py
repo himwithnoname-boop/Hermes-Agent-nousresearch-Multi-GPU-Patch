@@ -1,6 +1,6 @@
 from pathlib import Path
 import argparse,subprocess,json,hashlib,os,uuid,datetime
-BASE='5b147ab036d6d19131bff8d20701b5001eab844a'
+BASES={'5b147ab036d6d19131bff8d20701b5001eab844a':'v0.22.3', '4d04303818b61bf3aa09278af48356315515965b':'v0.22.4'}
 def sha(p):return hashlib.sha256(p.read_bytes()).hexdigest() if p.is_file() else None
 def git(root,*args):return subprocess.run(['git','-C',str(root),*map(str,args)],capture_output=True,text=True,encoding='utf-8',errors='replace')
 def main():
@@ -10,8 +10,9 @@ def main():
  for name,digest in json.loads((kit/'checksums.json').read_text(encoding='utf-8')).items():
   if sha(kit/name)!=digest:raise RuntimeError('Package integrity failure: '+name)
  head=git(root,'rev-parse','HEAD')
- if head.returncode or head.stdout.strip()!=BASE:raise RuntimeError('This installer requires the exact Hermes v0.22.3 checkout. No files changed.')
- cache=Path(os.environ['LOCALAPPDATA'])/'Hermes-MultiGPU-Patch'/hashlib.sha256(str(root).lower().encode()).hexdigest()[:16]/'v0.22.3'
+ if head.returncode or head.stdout.strip() not in BASES:raise RuntimeError('This installer requires an exact supported Hermes v0.22.3 or v0.22.4 checkout. No files changed.')
+ version=BASES[head.stdout.strip()]
+ cache=Path(os.environ['LOCALAPPDATA'])/'Hermes-MultiGPU-Patch'/hashlib.sha256(str(root).lower().encode()).hexdigest()[:16]/version
  receipt=cache/'receipt.json'
  if receipt.exists():
   r=json.loads(receipt.read_text(encoding='utf-8'))
@@ -25,7 +26,7 @@ def main():
  selected=None
  for name in ('multigpu-v0.22.3.patch',):
   if git(root,'apply','--check','--',kit/name).returncode==0:selected=kit/name;break
- if selected is None:raise RuntimeError('The source does not match the supported stock Hermes v0.22.3 baseline. No files changed.')
+ if selected is None:raise RuntimeError('The source does not match the supported stock Hermes v0.22.3/v0.22.4 baseline. No files changed.')
  paths=[line.split(' b/',1)[1] for line in selected.read_text(encoding='utf-8').splitlines() if line.startswith('diff --git a/')]
  for p in paths:
   target=root/p

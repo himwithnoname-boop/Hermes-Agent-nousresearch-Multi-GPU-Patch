@@ -20,5 +20,27 @@
     "memorySavingsClaimed": false
   },
   "patchSha256": "94bbfbab9cebe6f6c9b45049026d14c772fcce93bed1feaf1b885408325635c3",
-  "sourceTree": "1381e611384754f663ba740c36d66c36d98449fe"
+  "sourceTree": "1381e611384754f663ba740c36d66c36d98449fe",
+  "supportedUpstreamVersions": {
+    "v0.22.3": "5b147ab036d6d19131bff8d20701b5001eab844a",
+    "v0.22.4": "4d04303818b61bf3aa09278af48356315515965b"
+  },
+  "compatibilityValidation": {
+    "v0.22.4": {
+      "unchangedPatchApplies": true,
+      "upstreamChangedFiles": 82,
+      "nonOverlappingFilesPreserved": 74,
+      "localeOverlapsReviewed": 8,
+      "removedSuggestionKeysStayRemoved": true,
+      "pythonPassed": 620,
+      "upstreamSkipped": 4,
+      "desktopPassed": 18,
+      "desktopRendererTypecheckPassed": true,
+      "staticChecksPassed": 12,
+      "dualBaselineInstallerChecksPassed": 14,
+      "perVersionBackupsSeparated": true,
+      "engineLockUnchanged": true,
+      "nativeInferenceBenchmarkPerformed": false
+    }
+  }
 }

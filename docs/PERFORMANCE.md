@@ -2,7 +2,7 @@
 
 ## Current evidence
 
-| Measure | Stock v0.22.3 | Patched v0.22.3 | Defensible conclusion |
+| Measure | Stock supported Hermes | Patched supported Hermes | Defensible conclusion |
 |---|---|---|---|
 | Decode tokens/second | Not measured in a matched trial | Not measured in a matched trial | No speedup claim |
 | Prefill tokens/second | Not measured in a matched trial | Not measured in a matched trial | No speedup claim |

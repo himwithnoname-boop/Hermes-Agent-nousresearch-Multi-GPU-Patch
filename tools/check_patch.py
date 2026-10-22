@@ -6,7 +6,7 @@ from pathlib import Path
 import subprocess
 import sys
 
-BASE = "5b147ab036d6d19131bff8d20701b5001eab844a"
+BASES = {"5b147ab036d6d19131bff8d20701b5001eab844a", "4d04303818b61bf3aa09278af48356315515965b"}
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
@@ -21,8 +21,8 @@ def main() -> int:
             raise RuntimeError(result.stderr.strip() or "Git validation failed.")
         return result.stdout.strip()
     try:
-        if git("rev-parse", "HEAD") != BASE:
-            raise RuntimeError("Unsupported revision. Use the pinned v0.22.3 baseline.")
+        if git("rev-parse", "HEAD") not in BASES:
+            raise RuntimeError("Unsupported revision. Use a supported v0.22.3 or v0.22.4 baseline.")
         if git("status", "--porcelain", "--untracked-files=normal"):
             raise RuntimeError("Checkout is not clean. Use a separate clean checkout.")
         git("apply", "--check", "--binary", str(patch))
