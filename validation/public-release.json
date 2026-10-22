@@ -42,5 +42,14 @@
       "engineLockUnchanged": true,
       "nativeInferenceBenchmarkPerformed": false
     }
+  },
+  "requestQueueCorrection": {
+    "focusedTestsPassed": 57,
+    "fullRegressionPassed": 630,
+    "upstreamSkipped": 4,
+    "staticChecksPassed": 12,
+    "installerChecksPassed": 34,
+    "bothSupportedVersions": true,
+    "patchSha256": "b3eb29743ec1c170562da80b8b1bd0327790752ab8719059b0bf883fb8c4ab40"
   }
 }

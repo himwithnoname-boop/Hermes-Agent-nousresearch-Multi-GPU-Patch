@@ -1,0 +1,145 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "label": "v0.22.3-fresh-check",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-fresh-apply",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-fresh-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-fresh-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-fresh-external-edit-refusal",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.3-upgrade-old-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-upgrade-check",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-upgrade-apply",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-upgrade-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-upgrade-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-upgrade-external-edit-refusal",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.3-interrupted-upgrade-old-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-interrupted-upgrade-check",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-interrupted-upgrade-apply",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-interrupted-upgrade-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-interrupted-upgrade-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-interrupted-upgrade-external-edit-refusal",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.4-fresh-check",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-fresh-apply",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-fresh-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-fresh-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-fresh-external-edit-refusal",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.4-upgrade-old-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-upgrade-check",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-upgrade-apply",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-upgrade-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-upgrade-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-upgrade-external-edit-refusal",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.4-interrupted-upgrade-old-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-interrupted-upgrade-check",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-interrupted-upgrade-apply",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-interrupted-upgrade-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-interrupted-upgrade-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-interrupted-upgrade-external-edit-refusal",
+      "returncode": 1
+    }
+  ],
+  "freshAndExistingBothVersions": true,
+  "interruptedFileBeforeReceiptRecovered": true,
+  "checkOnlyReadOnly": true,
+  "customEditsRefused": true
+}

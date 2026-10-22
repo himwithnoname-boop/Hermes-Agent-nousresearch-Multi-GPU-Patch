@@ -68,8 +68,9 @@ class RequestTarget:
             idle = isinstance(slots, list) and bool(slots) and all(
                 isinstance(slot, dict) and slot.get("is_processing") is False for slot in slots)
         except urllib.error.HTTPError as exc:
-            # Only the router's explicit unloaded response is a release proof.
-            idle = exc.code == 400 and b"model is not loaded" in exc.read(4096).lower()
+            body = exc.read(4096)
+            idle = (exc.code == 400 and b"model is not loaded" in body.lower()) or (
+                exc.code in (400, 404) and _missing_model_response(body, model, exc.code))
         except (OSError, ValueError):
             return False
         return idle and self.valid()
@@ -78,6 +79,18 @@ class RequestTarget:
         return RequestQueue(self.path, self.generation, capacity=self.slots,
                             max_waiters=int(bounded_number(self.settings.get("max_waiters"), 64, 1, 1024)),
                             aging_seconds=bounded_number(self.settings.get("foreground_advantage_seconds"), 30, 0, 300))
+
+
+def _missing_model_response(body: bytes, model: str, status: int) -> bool:
+    """An owned router cannot still execute a model it explicitly says is absent."""
+    try:
+        payload = json.loads(body)
+    except (ValueError, UnicodeError):
+        return False
+    error = payload.get("error") if isinstance(payload, dict) else None
+    return (isinstance(error, dict) and error.get("code") == status
+            and error.get("type") == "invalid_request_error"
+            and error.get("message") == f"model '{model}' not found")
 
 
 def resolve_target(base_url: str, model: str) -> RequestTarget | None:

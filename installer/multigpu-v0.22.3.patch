@@ -1,5 +1,5 @@
 diff --git a/agent/auxiliary_client.py b/agent/auxiliary_client.py
-index 88f1fa59b52e374382666b5258c7348a9e32d62e..1860af2ab182f34935ca3001e597e6c3dd3f9bf7 100644
+index 88f1fa59..1860af2a 100644
 --- a/agent/auxiliary_client.py
 +++ b/agent/auxiliary_client.py
 @@ -19,6 +19,8 @@ import os
@@ -124,7 +124,7 @@ index 88f1fa59b52e374382666b5258c7348a9e32d62e..1860af2ab182f34935ca3001e597e6c3
      if isinstance(extra_body, dict):
 diff --git a/agent/auxiliary_scheduled.py b/agent/auxiliary_scheduled.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..d01db9e37b556d3e97106bda0517e989c0839ea3
+index 00000000..d01db9e3
 --- /dev/null
 +++ b/agent/auxiliary_scheduled.py
 @@ -0,0 +1,30 @@
@@ -159,7 +159,7 @@ index 0000000000000000000000000000000000000000..d01db9e37b556d3e97106bda0517e989
 +        provider=provider_name, model=model_name, api_mode=str(metadata.get("api_mode") or ""), streaming=True,
 +    )
 diff --git a/agent/chat_completion_helpers.py b/agent/chat_completion_helpers.py
-index a9349654010cf4a03cf2373af5049e873bb1ca81..edd1de4175238e4c8db426feef98f078e97d19ff 100644
+index a9349654..edd1de41 100644
 --- a/agent/chat_completion_helpers.py
 +++ b/agent/chat_completion_helpers.py
 @@ -25,6 +25,7 @@ from types import SimpleNamespace
@@ -314,7 +314,7 @@ index a9349654010cf4a03cf2373af5049e873bb1ca81..edd1de4175238e4c8db426feef98f078
  
  __all__ = [
 diff --git a/agent/chat_completion_nonstream.py b/agent/chat_completion_nonstream.py
-index 62d5bd7af517815dc47009e2fe73488324bdb847..e257a32d7ffaf769f1f497b9ff66e171b313ec09 100644
+index 62d5bd7a..e257a32d 100644
 --- a/agent/chat_completion_nonstream.py
 +++ b/agent/chat_completion_nonstream.py
 @@ -43,6 +43,9 @@ class _NonStreamRequest:
@@ -329,7 +329,7 @@ index 62d5bd7af517815dc47009e2fe73488324bdb847..e257a32d7ffaf769f1f497b9ff66e171
          if self.codex_token is not None and not self.codex_retired:  # retired before start: don't re-publish
 diff --git a/agent/generation_speed.py b/agent/generation_speed.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..4150000acdc9e02c792ed27d5bf4e0fc6d265ee1
+index 00000000..4150000a
 --- /dev/null
 +++ b/agent/generation_speed.py
 @@ -0,0 +1,82 @@
@@ -417,7 +417,7 @@ index 0000000000000000000000000000000000000000..4150000acdc9e02c792ed27d5bf4e0fc
 +        response.timings = timings
 diff --git a/agent/local_request_scheduler.py b/agent/local_request_scheduler.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..d32b7da86ea3534090d722e3dc4048deea7623cb
+index 00000000..d32b7da8
 --- /dev/null
 +++ b/agent/local_request_scheduler.py
 @@ -0,0 +1,281 @@
@@ -703,7 +703,7 @@ index 0000000000000000000000000000000000000000..d32b7da86ea3534090d722e3dc4048de
 +            lease.finish(uncertain=not succeeded)
 +    return call
 diff --git a/agent/stream_diag.py b/agent/stream_diag.py
-index 10af9ec5d71f6365c8e16031546ddeb936d8277c..8cbf6ffa654a1f87731b38f0e85da608002f386b 100644
+index 10af9ec5..8cbf6ffa 100644
 --- a/agent/stream_diag.py
 +++ b/agent/stream_diag.py
 @@ -238,3 +238,9 @@ __all__ = [
@@ -717,7 +717,7 @@ index 10af9ec5d71f6365c8e16031546ddeb936d8277c..8cbf6ffa654a1f87731b38f0e85da608
 +    if finish_reason and isinstance(diag, dict) and not diag.get("finish_reason_seen"):
 +        diag["finish_reason_seen"] = True
 diff --git a/agent/turn_usage.py b/agent/turn_usage.py
-index 6fd993664bed79232cd57a9102cb17f9562e6a67..f55f01b24b41b8e6d4443d4834f0eca39e4a27ef 100644
+index 6fd99366..f55f01b2 100644
 --- a/agent/turn_usage.py
 +++ b/agent/turn_usage.py
 @@ -186,7 +186,10 @@ def record_response_usage(
@@ -733,7 +733,7 @@ index 6fd993664bed79232cd57a9102cb17f9562e6a67..f55f01b24b41b8e6d4443d4834f0eca3
          hist = getattr(agent, "_api_latency_history", None)
          if hist is not None:
 diff --git a/apps/desktop/src/app/session/hooks/use-message-stream/usage.test.tsx b/apps/desktop/src/app/session/hooks/use-message-stream/usage.test.tsx
-index eb60e0dc918a1a64f4196b574d40cc54b23428db..66ded4eb517319ddbcd05cbb1a0a9deee3e3216e 100644
+index eb60e0dc..66ded4eb 100644
 --- a/apps/desktop/src/app/session/hooks/use-message-stream/usage.test.tsx
 +++ b/apps/desktop/src/app/session/hooks/use-message-stream/usage.test.tsx
 @@ -60,7 +60,7 @@ const GATEWAY_FRAME = {
@@ -747,7 +747,7 @@ index eb60e0dc918a1a64f4196b574d40cc54b23428db..66ded4eb517319ddbcd05cbb1a0a9dee
    contextBarLabel(usage),
 diff --git a/apps/desktop/src/app/settings/local-models-hardware-section.test.tsx b/apps/desktop/src/app/settings/local-models-hardware-section.test.tsx
 new file mode 100644
-index 0000000000000000000000000000000000000000..d5f91af4663d40c0a9ac832c99bc84886f881aae
+index 00000000..d5f91af4
 --- /dev/null
 +++ b/apps/desktop/src/app/settings/local-models-hardware-section.test.tsx
 @@ -0,0 +1,51 @@
@@ -803,7 +803,7 @@ index 0000000000000000000000000000000000000000..d5f91af4663d40c0a9ac832c99bc8488
 +  })
 +})
 diff --git a/apps/desktop/src/app/settings/local-models-hardware-section.tsx b/apps/desktop/src/app/settings/local-models-hardware-section.tsx
-index 7588823e0ccddf37438e9a79d66361bb893f3659..c11212474970e5420632b8f48e439fe1bc9ac061 100644
+index 7588823e..c1121247 100644
 --- a/apps/desktop/src/app/settings/local-models-hardware-section.tsx
 +++ b/apps/desktop/src/app/settings/local-models-hardware-section.tsx
 @@ -1,12 +1,43 @@
@@ -905,7 +905,7 @@ index 7588823e0ccddf37438e9a79d66361bb893f3659..c11212474970e5420632b8f48e439fe1
        ) : (
          <p className="py-1 text-[length:var(--conversation-caption-font-size)] text-muted-foreground">
 diff --git a/apps/desktop/src/app/shell/system-resources-statusbar.test.tsx b/apps/desktop/src/app/shell/system-resources-statusbar.test.tsx
-index e6d8d8011352ee56bc75562c296fc0cec244c8bd..5ed8ddeae76d42d457dbec99322635bc36d4b490 100644
+index e6d8d801..5ed8ddea 100644
 --- a/apps/desktop/src/app/shell/system-resources-statusbar.test.tsx
 +++ b/apps/desktop/src/app/shell/system-resources-statusbar.test.tsx
 @@ -1,4 +1,4 @@
@@ -953,7 +953,7 @@ index e6d8d8011352ee56bc75562c296fc0cec244c8bd..5ed8ddeae76d42d457dbec99322635bc
      vi.spyOn(document, 'hidden', 'get').mockReturnValue(true)
  
 diff --git a/apps/desktop/src/app/shell/system-resources-statusbar.tsx b/apps/desktop/src/app/shell/system-resources-statusbar.tsx
-index f81b3c9b482dfc7aa7a930b6ef79203855378b56..b154934b8aea91306e4ec50bc45b1fd322a73fd4 100644
+index f81b3c9b..b154934b 100644
 --- a/apps/desktop/src/app/shell/system-resources-statusbar.tsx
 +++ b/apps/desktop/src/app/shell/system-resources-statusbar.tsx
 @@ -21,7 +21,7 @@ function gb(bytes: number | null | undefined): string {
@@ -966,7 +966,7 @@ index f81b3c9b482dfc7aa7a930b6ef79203855378b56..b154934b8aea91306e4ec50bc45b1fd3
  
  function MeterRow({ label, percent, value }: { label: string; percent: number | null; value: string }) {
 diff --git a/apps/desktop/src/i18n/de.ts b/apps/desktop/src/i18n/de.ts
-index 2ce7934cf9cb6368c0eb5e3e943072be7417ddf0..d683a4c3b7e390403ca1c62a395f32d60e91bc9c 100644
+index 2ce7934c..d683a4c3 100644
 --- a/apps/desktop/src/i18n/de.ts
 +++ b/apps/desktop/src/i18n/de.ts
 @@ -4588,7 +4588,7 @@ export const deOverrides = {
@@ -979,7 +979,7 @@ index 2ce7934cf9cb6368c0eb5e3e943072be7417ddf0..d683a4c3b7e390403ca1c62a395f32d6
        closeAgents: 'Agents schließen',
        openAgents: 'Agents öffnen',
 diff --git a/apps/desktop/src/i18n/en.ts b/apps/desktop/src/i18n/en.ts
-index a628617d194be6376c0afe1e39549af377289e99..ddb52fa6abd672b3423a668664e14fc9a76a8dde 100644
+index a628617d..ddb52fa6 100644
 --- a/apps/desktop/src/i18n/en.ts
 +++ b/apps/desktop/src/i18n/en.ts
 @@ -4160,7 +4160,7 @@ export const en: Translations = {
@@ -992,7 +992,7 @@ index a628617d194be6376c0afe1e39549af377289e99..ddb52fa6abd672b3423a668664e14fc9
        closeAgents: 'Close agents',
        openAgents: 'Open agents',
 diff --git a/apps/desktop/src/i18n/en_local_models.ts b/apps/desktop/src/i18n/en_local_models.ts
-index 5ef86d3ba9019e5e66630d222f1931e4fc9b8ce8..cdfd81a3ed7a813c5f39d72f12c60add59ee887e 100644
+index 5ef86d3b..cdfd81a3 100644
 --- a/apps/desktop/src/i18n/en_local_models.ts
 +++ b/apps/desktop/src/i18n/en_local_models.ts
 @@ -16,6 +16,11 @@ export const enLocalModels: Translations['settings']['localModels'] = {
@@ -1008,7 +1008,7 @@ index 5ef86d3ba9019e5e66630d222f1931e4fc9b8ce8..cdfd81a3ed7a813c5f39d72f12c60add
    vram: label => `${label} GPU memory`,
    ram: label => `${label} RAM`,
 diff --git a/apps/desktop/src/i18n/es.ts b/apps/desktop/src/i18n/es.ts
-index 29732ff0a15e3b228d09c644351c750b68be5fbb..7a8b62160572cce052bafeada92a41cdb1998322 100644
+index 29732ff0..7a8b6216 100644
 --- a/apps/desktop/src/i18n/es.ts
 +++ b/apps/desktop/src/i18n/es.ts
 @@ -4583,7 +4583,7 @@ export const esOverrides = {
@@ -1021,7 +1021,7 @@ index 29732ff0a15e3b228d09c644351c750b68be5fbb..7a8b62160572cce052bafeada92a41cd
        closeAgents: 'Cerrar agentes',
        openAgents: 'Abrir agentes',
 diff --git a/apps/desktop/src/i18n/fr.ts b/apps/desktop/src/i18n/fr.ts
-index 7fdbd2f46cb218642bd7be29ee3bd2eec74d72c9..1141306d10ce543f22bff1d95a7d2a5571477545 100644
+index 7fdbd2f4..1141306d 100644
 --- a/apps/desktop/src/i18n/fr.ts
 +++ b/apps/desktop/src/i18n/fr.ts
 @@ -4596,7 +4596,7 @@ export const frOverrides = {
@@ -1034,7 +1034,7 @@ index 7fdbd2f46cb218642bd7be29ee3bd2eec74d72c9..1141306d10ce543f22bff1d95a7d2a55
        closeAgents: 'Fermer les agents',
        openAgents: 'Ouvrir les agents',
 diff --git a/apps/desktop/src/i18n/ru.ts b/apps/desktop/src/i18n/ru.ts
-index 6287a50b3346f6a20991c91e6dd556f16f3b8a5b..5743ec6be3f77af70388e3b38398b822b22391d2 100644
+index 6287a50b..5743ec6b 100644
 --- a/apps/desktop/src/i18n/ru.ts
 +++ b/apps/desktop/src/i18n/ru.ts
 @@ -3280,7 +3280,7 @@ export const ruOverrides = {
@@ -1047,7 +1047,7 @@ index 6287a50b3346f6a20991c91e6dd556f16f3b8a5b..5743ec6be3f77af70388e3b38398b822
        closeAgents: 'Закрыть агентов',
        openAgents: 'Открыть агентов',
 diff --git a/apps/desktop/src/i18n/types.ts b/apps/desktop/src/i18n/types.ts
-index 26481d57f51712388e064f8a52633e42f36b7787..6a4879feca3db24fc718132dd6a7ad7b7b01f921 100644
+index 26481d57..6a4879fe 100644
 --- a/apps/desktop/src/i18n/types.ts
 +++ b/apps/desktop/src/i18n/types.ts
 @@ -1331,7 +1331,9 @@ catalog: CatalogTranslations
@@ -1082,7 +1082,7 @@ index 26481d57f51712388e064f8a52633e42f36b7787..6a4879feca3db24fc718132dd6a7ad7b
        downloadEtaMinutes: (count: number) => string
        downloadEtaHours: (hours: number, minutes: number) => string
 diff --git a/apps/desktop/src/i18n/zh.ts b/apps/desktop/src/i18n/zh.ts
-index a24b0587a391a315f5e7080b9c775a9f82267898..35905316c347a853348e1cbefd9268e8f3831a1d 100644
+index a24b0587..35905316 100644
 --- a/apps/desktop/src/i18n/zh.ts
 +++ b/apps/desktop/src/i18n/zh.ts
 @@ -4008,7 +4008,7 @@ export const zhOverrides = {
@@ -1095,7 +1095,7 @@ index a24b0587a391a315f5e7080b9c775a9f82267898..35905316c347a853348e1cbefd9268e8
        closeAgents: '关闭代理',
        openAgents: '打开代理',
 diff --git a/apps/desktop/src/lib/statusbar.test.ts b/apps/desktop/src/lib/statusbar.test.ts
-index f4bbb5d9952b01142180b0134d0f034d44d9794b..8281ecd4d8c22082fb395b82187f5bd79a4a2d27 100644
+index f4bbb5d9..8281ecd4 100644
 --- a/apps/desktop/src/lib/statusbar.test.ts
 +++ b/apps/desktop/src/lib/statusbar.test.ts
 @@ -12,6 +12,7 @@ describe('statusbar usage readouts', () => {
@@ -1108,7 +1108,7 @@ index f4bbb5d9952b01142180b0134d0f034d44d9794b..8281ecd4d8c22082fb395b82187f5bd7
    })
  })
 diff --git a/apps/desktop/src/lib/statusbar.tsx b/apps/desktop/src/lib/statusbar.tsx
-index b12e6056c23a29dfe7ccc8b843a0e93786d9e7e1..71e3e4e7deae99dd5953cabde381a6dc86a2fd38 100644
+index b12e6056..71e3e4e7 100644
 --- a/apps/desktop/src/lib/statusbar.tsx
 +++ b/apps/desktop/src/lib/statusbar.tsx
 @@ -72,7 +72,7 @@ export function cacheHitLabel(usage: UsageStats): string {
@@ -1121,7 +1121,7 @@ index b12e6056c23a29dfe7ccc8b843a0e93786d9e7e1..71e3e4e7deae99dd5953cabde381a6dc
  
  export function LiveDuration({ since }: { since: number | null | undefined }) {
 diff --git a/apps/desktop/src/types/hermes.ts b/apps/desktop/src/types/hermes.ts
-index 6ba5c54f5e797dee2f7b2821689ecb6ea6080a95..3bba88ef000e11e56de9b083e1d63345acd38440 100644
+index 6ba5c54f..3bba88ef 100644
 --- a/apps/desktop/src/types/hermes.ts
 +++ b/apps/desktop/src/types/hermes.ts
 @@ -873,6 +873,7 @@ export interface SessionRuntimeInfo {
@@ -1148,7 +1148,7 @@ index 6ba5c54f5e797dee2f7b2821689ecb6ea6080a95..3bba88ef000e11e56de9b083e1d63345
    vram_total_bytes: number
    vram_usable_bytes: number
 diff --git a/apps/shared/src/gateway-contract.generated.ts b/apps/shared/src/gateway-contract.generated.ts
-index 3e678bed20e4094c627ff98259854b55de20b78c..84d584b6b8fbd25451186582d70da1529947f8c3 100644
+index 3e678bed..84d584b6 100644
 --- a/apps/shared/src/gateway-contract.generated.ts
 +++ b/apps/shared/src/gateway-contract.generated.ts
 @@ -575,6 +575,7 @@ export interface Usage {
@@ -1184,7 +1184,7 @@ index 3e678bed20e4094c627ff98259854b55de20b78c..84d584b6b8fbd25451186582d70da152
    rate_limit?: Record<string, unknown> | null
    active_subagents?: number | null
 diff --git a/apps/shared/src/gateway-contract.openrpc.json b/apps/shared/src/gateway-contract.openrpc.json
-index d5fd22f4ad0657ddd42cc5c09c7c5c7dc60bc94d..0599840c56329921250ce90e6035b0d1db3a1866 100644
+index d5fd22f4..0599840c 100644
 --- a/apps/shared/src/gateway-contract.openrpc.json
 +++ b/apps/shared/src/gateway-contract.openrpc.json
 @@ -38438,6 +38438,22 @@
@@ -1280,7 +1280,7 @@ index d5fd22f4ad0657ddd42cc5c09c7c5c7dc60bc94d..0599840c56329921250ce90e6035b0d1
              "anyOf": [
                {
 diff --git a/apps/shared/src/usage-tick.ts b/apps/shared/src/usage-tick.ts
-index f0b4310d13214dbff62ec4349cd1c43d4cb08ce3..b916c05b986dcb94eb3b7f6adb673a82f06d0a28 100644
+index f0b4310d..b916c05b 100644
 --- a/apps/shared/src/usage-tick.ts
 +++ b/apps/shared/src/usage-tick.ts
 @@ -8,6 +8,7 @@ export interface TickUsage {
@@ -1302,7 +1302,7 @@ index f0b4310d13214dbff62ec4349cd1c43d4cb08ce3..b916c05b986dcb94eb3b7f6adb673a82
  
    if (subagents !== undefined) {
 diff --git a/gateway/session_usage.py b/gateway/session_usage.py
-index 68c3102c62c48daa40e1f9f4af3bbd1155b85c47..900488fd480d310b13f11e1c9080d98001d5e63c 100644
+index 68c3102c..900488fd 100644
 --- a/gateway/session_usage.py
 +++ b/gateway/session_usage.py
 @@ -69,6 +69,10 @@ def usage_stats(agent) -> dict:
@@ -1335,7 +1335,7 @@ index 68c3102c62c48daa40e1f9f4af3bbd1155b85c47..900488fd480d310b13f11e1c9080d980
          usage["active_subagents"] = stats["active_subagents"]
      return usage
 diff --git a/hermes_cli/cli_status_bar_mixin.py b/hermes_cli/cli_status_bar_mixin.py
-index 14dbe602930a89f7189ba5e7048f42095ed3eb6b..50aaf5d368031cfbb3097a736fea54b6c0006915 100644
+index 14dbe602..50aaf5d3 100644
 --- a/hermes_cli/cli_status_bar_mixin.py
 +++ b/hermes_cli/cli_status_bar_mixin.py
 @@ -391,10 +391,14 @@ class CLIStatusBarMixin:
@@ -1355,7 +1355,7 @@ index 14dbe602930a89f7189ba5e7048f42095ed3eb6b..50aaf5d368031cfbb3097a736fea54b6
  
      def _get_status_bar_session_title(self) -> str:
 diff --git a/hermes_cli/config_defaults.py b/hermes_cli/config_defaults.py
-index fca536268661440d078c3c1de422bb2a76b4d05c..d1e234c20ed3fbeff4bb2e7d9ebe56757f768ee5 100644
+index fca53626..d1e234c2 100644
 --- a/hermes_cli/config_defaults.py
 +++ b/hermes_cli/config_defaults.py
 @@ -5,6 +5,9 @@ docs of config.yaml.
@@ -1389,7 +1389,7 @@ index fca536268661440d078c3c1de422bb2a76b4d05c..d1e234c20ed3fbeff4bb2e7d9ebe5675
  }
  
 diff --git a/hermes_cli/gateway_agent.py b/hermes_cli/gateway_agent.py
-index 61aa0457283731eb557fed06a3d22f9b273c661e..539ffeb3ccb87513e159bb5747e2997a4be7efff 100644
+index 61aa0457..539ffeb3 100644
 --- a/hermes_cli/gateway_agent.py
 +++ b/hermes_cli/gateway_agent.py
 @@ -512,6 +512,12 @@ class GatewayAgent:
@@ -1407,7 +1407,7 @@ index 61aa0457283731eb557fed06a3d22f9b273c661e..539ffeb3ccb87513e159bb5747e2997a
          if usage.get("model"):
 diff --git a/hermes_cli/local_runtime/adaptive_resources.py b/hermes_cli/local_runtime/adaptive_resources.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..2fb5891212c76c3c13a5c44911022a20f522736b
+index 00000000..2fb58912
 --- /dev/null
 +++ b/hermes_cli/local_runtime/adaptive_resources.py
 @@ -0,0 +1,84 @@
@@ -1496,7 +1496,7 @@ index 0000000000000000000000000000000000000000..2fb5891212c76c3c13a5c44911022a20
 +    return (now - candidate[1] >= dwell
 +            and now - getattr(supervisor, "_adaptive_refit_at", float("-inf")) >= cooldown)
 diff --git a/hermes_cli/local_runtime/bootstrap.py b/hermes_cli/local_runtime/bootstrap.py
-index b23950044be2200f36d0936d558cdc5ba0ce085e..c2fac793082164c1fa7472fcd9584786cf6c7dd6 100644
+index b2395004..c2fac793 100644
 --- a/hermes_cli/local_runtime/bootstrap.py
 +++ b/hermes_cli/local_runtime/bootstrap.py
 @@ -149,8 +149,17 @@ def _presets_stale() -> bool:
@@ -1597,7 +1597,7 @@ index b23950044be2200f36d0936d558cdc5ba0ce085e..c2fac793082164c1fa7472fcd9584786
  _REFIT_STEP_BYTES = 256 << 20
 diff --git a/hermes_cli/local_runtime/config_defaults.py b/hermes_cli/local_runtime/config_defaults.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..ae0884226911c046ff02172ee296ed331a1e3c95
+index 00000000..ae088422
 --- /dev/null
 +++ b/hermes_cli/local_runtime/config_defaults.py
 @@ -0,0 +1,28 @@
@@ -1630,7 +1630,7 @@ index 0000000000000000000000000000000000000000..ae0884226911c046ff02172ee296ed33
 +    "detect_ports": [],
 +}
 diff --git a/hermes_cli/local_runtime/context_policy.py b/hermes_cli/local_runtime/context_policy.py
-index 41416b766ea70a108f44f7144c18ed1844115cf1..c566335e8ef328029a08fd9078c4f26d1ad7f516 100644
+index 41416b76..c566335e 100644
 --- a/hermes_cli/local_runtime/context_policy.py
 +++ b/hermes_cli/local_runtime/context_policy.py
 @@ -7,11 +7,14 @@ behavior measured on real hardware (llama.cpp, discrete NVIDIA on Windows/WDDM,
@@ -1925,7 +1925,7 @@ index 41416b766ea70a108f44f7144c18ed1844115cf1..c566335e8ef328029a08fd9078c4f26d
  
 diff --git a/hermes_cli/local_runtime/cuda_memory.py b/hermes_cli/local_runtime/cuda_memory.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..3cc76357506803bbb60d56cfa8c5258ae577be31
+index 00000000..3cc76357
 --- /dev/null
 +++ b/hermes_cli/local_runtime/cuda_memory.py
 @@ -0,0 +1,122 @@
@@ -2053,7 +2053,7 @@ index 0000000000000000000000000000000000000000..3cc76357506803bbb60d56cfa8c5258a
 +    print(json.dumps(_runtime_buses(Path(sys.argv[1]))))
 diff --git a/hermes_cli/local_runtime/cuda_placement.py b/hermes_cli/local_runtime/cuda_placement.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..0825c30d6e52297903ac422cf0efc99219fe8b1b
+index 00000000..0825c30d
 --- /dev/null
 +++ b/hermes_cli/local_runtime/cuda_placement.py
 @@ -0,0 +1,62 @@
@@ -2120,7 +2120,7 @@ index 0000000000000000000000000000000000000000..0825c30d6e52297903ac422cf0efc992
 +                return True
 +    return False
 diff --git a/hermes_cli/local_runtime/estimator.py b/hermes_cli/local_runtime/estimator.py
-index d54a50f5dc8b0c70693976556a15ee83462aba75..ff5edd4efe17df22c15c235c21347e016d1b07d8 100644
+index d54a50f5..ff5edd4e 100644
 --- a/hermes_cli/local_runtime/estimator.py
 +++ b/hermes_cli/local_runtime/estimator.py
 @@ -6,10 +6,15 @@ ground truth after it. Unknown shapes round UP (never underestimate memory).
@@ -2334,7 +2334,7 @@ index d54a50f5dc8b0c70693976556a15ee83462aba75..ff5edd4efe17df22c15c235c21347e01
 -                 "of VRAM+RAM are available — try a smaller model or a supported smaller quant"))
 +                 f"{resource} — {remedy}"))
 diff --git a/hermes_cli/local_runtime/gguf.py b/hermes_cli/local_runtime/gguf.py
-index 4d5fca708fdf468eac9fa1d15892d2458a117ec8..169024754b98be170d72f06e83878a73a30907ae 100644
+index 4d5fca70..16902475 100644
 --- a/hermes_cli/local_runtime/gguf.py
 +++ b/hermes_cli/local_runtime/gguf.py
 @@ -88,6 +88,10 @@ class GGUFHeader:
@@ -2450,7 +2450,7 @@ index 4d5fca708fdf468eac9fa1d15892d2458a117ec8..169024754b98be170d72f06e83878a73
 +            readable, int(SPLIT_PART_RE.search(path.name).group(2))))
 diff --git a/hermes_cli/local_runtime/glm.py b/hermes_cli/local_runtime/glm.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..0548cf8d226776eedbee581150cab58ff3903142
+index 00000000..0548cf8d
 --- /dev/null
 +++ b/hermes_cli/local_runtime/glm.py
 @@ -0,0 +1,207 @@
@@ -2662,7 +2662,7 @@ index 0000000000000000000000000000000000000000..0548cf8d226776eedbee581150cab58f
 +        for path in paths:
 +            path.unlink(missing_ok=True)
 diff --git a/hermes_cli/local_runtime/hardware.py b/hermes_cli/local_runtime/hardware.py
-index a8516150b546b20a87f6b8d54476cf3b19fd3510..33a0c958b2684143bf78b0471cd3409f1627cf61 100644
+index a8516150..33a0c958 100644
 --- a/hermes_cli/local_runtime/hardware.py
 +++ b/hermes_cli/local_runtime/hardware.py
 @@ -443,22 +443,37 @@ def prompt_cache_bytes(live: HardwareBudget | None, model_bytes: int, residents:
@@ -2781,7 +2781,7 @@ index a8516150b546b20a87f6b8d54476cf3b19fd3510..33a0c958b2684143bf78b0471cd3409f
 +    return _discrete_host_budget(replace(capacity, usable_vram_bytes=usable))
 diff --git a/hermes_cli/local_runtime/multigpu.py b/hermes_cli/local_runtime/multigpu.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..7a92e083b1576c624068a8d5331a63909ff0d1c9
+index 00000000..7a92e083
 --- /dev/null
 +++ b/hermes_cli/local_runtime/multigpu.py
 @@ -0,0 +1,143 @@
@@ -2929,7 +2929,7 @@ index 0000000000000000000000000000000000000000..7a92e083b1576c624068a8d5331a6390
 +    desired = placement_keys(cuda_budget(devices, 0, planning=True))
 +    return any(any(keys.get(k) != v for k, v in desired.items()) for keys in placements)
 diff --git a/hermes_cli/local_runtime/presets.py b/hermes_cli/local_runtime/presets.py
-index 62e966ce5a850d463d09d339c3cbcf92d5f9c99e..8b24300e2f99c0a9d2cd69a203673ea6f0f80128 100644
+index 62e966ce..8b24300e 100644
 --- a/hermes_cli/local_runtime/presets.py
 +++ b/hermes_cli/local_runtime/presets.py
 @@ -10,9 +10,9 @@ from dataclasses import dataclass, replace
@@ -3180,7 +3180,7 @@ index 62e966ce5a850d463d09d339c3cbcf92d5f9c99e..8b24300e2f99c0a9d2cd69a203673ea6
              body = "\n".join(f"{k} = {v}" for k, v in entry.keys.items())
              sections.append(f"[{entry.model_id}]\n{body}\n")
 diff --git a/hermes_cli/local_runtime/processes.py b/hermes_cli/local_runtime/processes.py
-index 4e3196e22c7dc4ca0134d8de8a234c8cba26747a..d7681674b144df252aa750e6ae02fada43eebebc 100644
+index 4e3196e2..d7681674 100644
 --- a/hermes_cli/local_runtime/processes.py
 +++ b/hermes_cli/local_runtime/processes.py
 @@ -101,10 +101,14 @@ def server_child_env(base_env: Mapping[str, str]) -> dict[str, str]:
@@ -3201,7 +3201,7 @@ index 4e3196e22c7dc4ca0134d8de8a234c8cba26747a..d7681674b144df252aa750e6ae02fada
  def spawn_server(cmd, **kwargs) -> tuple[subprocess.Popen, _WindowsJob | None]:
 diff --git a/hermes_cli/local_runtime/reasoning.py b/hermes_cli/local_runtime/reasoning.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..79859d56093b90afc4b271d68fe9b8f864d724b5
+index 00000000..79859d56
 --- /dev/null
 +++ b/hermes_cli/local_runtime/reasoning.py
 @@ -0,0 +1,301 @@
@@ -3508,7 +3508,7 @@ index 0000000000000000000000000000000000000000..79859d56093b90afc4b271d68fe9b8f8
 +        return None
 diff --git a/hermes_cli/local_runtime/refit_admission.py b/hermes_cli/local_runtime/refit_admission.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..d39d0b0be2f73d0c244701b1e2fc9d2b130e119c
+index 00000000..d39d0b0b
 --- /dev/null
 +++ b/hermes_cli/local_runtime/refit_admission.py
 @@ -0,0 +1,40 @@
@@ -3554,7 +3554,7 @@ index 0000000000000000000000000000000000000000..d39d0b0be2f73d0c244701b1e2fc9d2b
 +            queue.finish(ticket)
 diff --git a/hermes_cli/local_runtime/request_queue.py b/hermes_cli/local_runtime/request_queue.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..53142838984cfc2a432b5ec4543d98173b8cd5a6
+index 00000000..53142838
 --- /dev/null
 +++ b/hermes_cli/local_runtime/request_queue.py
 @@ -0,0 +1,150 @@
@@ -3710,10 +3710,10 @@ index 0000000000000000000000000000000000000000..53142838984cfc2a432b5ec4543d9817
 +                "oldest_wait_seconds": max(0, time.time() - oldest) if oldest else 0}
 diff --git a/hermes_cli/local_runtime/request_target.py b/hermes_cli/local_runtime/request_target.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..a89e41c55401b6952300a80638b470d827889253
+index 00000000..f8405c34
 --- /dev/null
 +++ b/hermes_cli/local_runtime/request_target.py
-@@ -0,0 +1,107 @@
+@@ -0,0 +1,120 @@
 +"""Ownership-fenced, read-only runtime facts for request admission."""
 +
 +from __future__ import annotations
@@ -3784,8 +3784,9 @@ index 0000000000000000000000000000000000000000..a89e41c55401b6952300a80638b470d8
 +            idle = isinstance(slots, list) and bool(slots) and all(
 +                isinstance(slot, dict) and slot.get("is_processing") is False for slot in slots)
 +        except urllib.error.HTTPError as exc:
-+            # Only the router's explicit unloaded response is a release proof.
-+            idle = exc.code == 400 and b"model is not loaded" in exc.read(4096).lower()
++            body = exc.read(4096)
++            idle = (exc.code == 400 and b"model is not loaded" in body.lower()) or (
++                exc.code in (400, 404) and _missing_model_response(body, model, exc.code))
 +        except (OSError, ValueError):
 +            return False
 +        return idle and self.valid()
@@ -3794,6 +3795,18 @@ index 0000000000000000000000000000000000000000..a89e41c55401b6952300a80638b470d8
 +        return RequestQueue(self.path, self.generation, capacity=self.slots,
 +                            max_waiters=int(bounded_number(self.settings.get("max_waiters"), 64, 1, 1024)),
 +                            aging_seconds=bounded_number(self.settings.get("foreground_advantage_seconds"), 30, 0, 300))
++
++
++def _missing_model_response(body: bytes, model: str, status: int) -> bool:
++    """An owned router cannot still execute a model it explicitly says is absent."""
++    try:
++        payload = json.loads(body)
++    except (ValueError, UnicodeError):
++        return False
++    error = payload.get("error") if isinstance(payload, dict) else None
++    return (isinstance(error, dict) and error.get("code") == status
++            and error.get("type") == "invalid_request_error"
++            and error.get("message") == f"model '{model}' not found")
 +
 +
 +def resolve_target(base_url: str, model: str) -> RequestTarget | None:
@@ -3822,7 +3835,7 @@ index 0000000000000000000000000000000000000000..a89e41c55401b6952300a80638b470d8
 +        slots = int(bounded_number(keys.get("parallel"), 1, 1, 32))
 +    return RequestTarget(state, state_path().parent / "request-admission.sqlite3", model, slots, settings)
 diff --git a/hermes_cli/local_runtime/supervisor.py b/hermes_cli/local_runtime/supervisor.py
-index d2ef1b50d788a365f4d7f80e9e9c379b2201d4ca..ee188482a1b0be0d168c1621b1e7fe18c59ff49b 100644
+index d2ef1b50..ee188482 100644
 --- a/hermes_cli/local_runtime/supervisor.py
 +++ b/hermes_cli/local_runtime/supervisor.py
 @@ -10,6 +10,7 @@ token, generous budget, reasoning_content scanned); always dial 127.0.0.1 — re
@@ -4288,7 +4301,7 @@ index d2ef1b50d788a365f4d7f80e9e9c379b2201d4ca..ee188482a1b0be0d168c1621b1e7fe18
          except Exception:
              return None
 diff --git a/hermes_cli/runtime_provider_custom.py b/hermes_cli/runtime_provider_custom.py
-index 39fa42b15529592951e18e9b1875ac93a30d54fb..7a8f33572bda8f1b26b6401b26fa894e835b291c 100644
+index 39fa42b1..7a8f3357 100644
 --- a/hermes_cli/runtime_provider_custom.py
 +++ b/hermes_cli/runtime_provider_custom.py
 @@ -519,7 +519,30 @@ def _apply_custom_provider_extras(custom_provider: dict[str, Any], target_model:
@@ -4353,7 +4366,7 @@ index 39fa42b15529592951e18e9b1875ac93a30d54fb..7a8f33572bda8f1b26b6401b26fa894e
      # The credential pool is the profile's auth store (``hermes auth add``), not config: a frozen
      # config snapshot still owes a pooled ``providers:`` entry its keys, or the turn ships the
 diff --git a/hermes_cli/web_routers/local_models.py b/hermes_cli/web_routers/local_models.py
-index 123c1813c963b7ed1f9c018df31735f3311d0981..7faeedbad91e5d41a7abf58fe40ccfd732ac60bf 100644
+index 123c1813..7faeedba 100644
 --- a/hermes_cli/web_routers/local_models.py
 +++ b/hermes_cli/web_routers/local_models.py
 @@ -585,14 +585,34 @@ def _nvidia_smi_facts() -> dict:
@@ -4504,7 +4517,7 @@ index 123c1813c963b7ed1f9c018df31735f3311d0981..7faeedbad91e5d41a7abf58fe40ccfd7
  
  
 diff --git a/locales/_keys.desktop.json b/locales/_keys.desktop.json
-index 736b3e0deaf746baab2716d8e323c0283b6f979d..7f47f7da51033fe42a658ff5a85001fb6ace1524 100644
+index 736b3e0d..7f47f7da 100644
 --- a/locales/_keys.desktop.json
 +++ b/locales/_keys.desktop.json
 @@ -3557,6 +3557,11 @@
@@ -4521,7 +4534,7 @@ index 736b3e0deaf746baab2716d8e323c0283b6f979d..7f47f7da51033fe42a658ff5a85001fb
      "settings.localModels.noRecommendationDetail",
 diff --git a/tests/agent/test_generation_speed.py b/tests/agent/test_generation_speed.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..1f70f8bbc5a5a375867677e9c8284838a2460c3d
+index 00000000..1f70f8bb
 --- /dev/null
 +++ b/tests/agent/test_generation_speed.py
 @@ -0,0 +1,124 @@
@@ -4651,7 +4664,7 @@ index 0000000000000000000000000000000000000000..1f70f8bbc5a5a375867677e9c8284838
 +    assert engine_sample(cut) is None
 diff --git a/tests/agent/test_local_request_scheduler.py b/tests/agent/test_local_request_scheduler.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..a8663188f69b5201864c2bbe1378b32720a1f627
+index 00000000..a8663188
 --- /dev/null
 +++ b/tests/agent/test_local_request_scheduler.py
 @@ -0,0 +1,406 @@
@@ -5062,7 +5075,7 @@ index 0000000000000000000000000000000000000000..a8663188f69b5201864c2bbe1378b327
 +    assert target.queue().snapshot()["waiting"] == 0
 +    assert called == []
 diff --git a/tests/gateway/test_local_viewer_usage.py b/tests/gateway/test_local_viewer_usage.py
-index 44cd5bfba79c5db424e50616151b1bf5feea28c7..85e4ce8705877e6da0a48de02e0707dd52866101 100644
+index 44cd5bfb..85e4ce87 100644
 --- a/tests/gateway/test_local_viewer_usage.py
 +++ b/tests/gateway/test_local_viewer_usage.py
 @@ -12,7 +12,7 @@ from gateway.config import Platform
@@ -5076,7 +5089,7 @@ index 44cd5bfba79c5db424e50616151b1bf5feea28c7..85e4ce8705877e6da0a48de02e0707dd
  
 diff --git a/tests/hermes_cli/test_adaptive_runtime_resources.py b/tests/hermes_cli/test_adaptive_runtime_resources.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..ac8853c85e923e87a26fa8b1b325454b0f1f9347
+index 00000000..ac8853c8
 --- /dev/null
 +++ b/tests/hermes_cli/test_adaptive_runtime_resources.py
 @@ -0,0 +1,102 @@
@@ -5184,7 +5197,7 @@ index 0000000000000000000000000000000000000000..ac8853c85e923e87a26fa8b1b325454b
 +    assert q.try_admit(request)
 diff --git a/tests/hermes_cli/test_cuda_inventory_coherence.py b/tests/hermes_cli/test_cuda_inventory_coherence.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..c0c8502d2ae4b2e4d61adceb07000440081c5999
+index 00000000..c0c8502d
 --- /dev/null
 +++ b/tests/hermes_cli/test_cuda_inventory_coherence.py
 @@ -0,0 +1,122 @@
@@ -5313,7 +5326,7 @@ index 0000000000000000000000000000000000000000..c0c8502d2ae4b2e4d61adceb07000440
 \ No newline at end of file
 diff --git a/tests/hermes_cli/test_cuda_inventory_validation.py b/tests/hermes_cli/test_cuda_inventory_validation.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..1887a26bbd287927a2832e497293d02060b31f7d
+index 00000000..1887a26b
 --- /dev/null
 +++ b/tests/hermes_cli/test_cuda_inventory_validation.py
 @@ -0,0 +1,50 @@
@@ -5369,7 +5382,7 @@ index 0000000000000000000000000000000000000000..1887a26bbd287927a2832e497293d020
 +    assert [device.free for device in devices] == [28672 << 20, 8192 << 20]
 diff --git a/tests/hermes_cli/test_host_cache_pressure.py b/tests/hermes_cli/test_host_cache_pressure.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..6a6cf5ec2dfaa7dc3031d89c668f4bb688b3bfa5
+index 00000000..6a6cf5ec
 --- /dev/null
 +++ b/tests/hermes_cli/test_host_cache_pressure.py
 @@ -0,0 +1,67 @@
@@ -5442,7 +5455,7 @@ index 0000000000000000000000000000000000000000..6a6cf5ec2dfaa7dc3031d89c668f4bb6
 +    assert "CUDA device inventory changed" in entry.refusal
 diff --git a/tests/hermes_cli/test_local_cross_process_eject.py b/tests/hermes_cli/test_local_cross_process_eject.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..bb0597524dfcd9fa3d4e499b9cd259389a827206
+index 00000000..bb059752
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_cross_process_eject.py
 @@ -0,0 +1,255 @@
@@ -5703,7 +5716,7 @@ index 0000000000000000000000000000000000000000..bb0597524dfcd9fa3d4e499b9cd25938
 +    assert _OPERATION_KEY not in result.text and _NEXT_OPERATION_KEY not in result.text
 diff --git a/tests/hermes_cli/test_local_cuda_placement_optional.py b/tests/hermes_cli/test_local_cuda_placement_optional.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..0f8df266cfefed62db548ed624045ef0f5085518
+index 00000000..0f8df266
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_cuda_placement_optional.py
 @@ -0,0 +1,135 @@
@@ -5844,7 +5857,7 @@ index 0000000000000000000000000000000000000000..0f8df266cfefed62db548ed624045ef0
 +""")
 diff --git a/tests/hermes_cli/test_local_discrete_commit_budget.py b/tests/hermes_cli/test_local_discrete_commit_budget.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..1a3b6884cdf352f15c3a4a27bfcfdf2a6db0a4e0
+index 00000000..1a3b6884
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_discrete_commit_budget.py
 @@ -0,0 +1,139 @@
@@ -5989,7 +6002,7 @@ index 0000000000000000000000000000000000000000..1a3b6884cdf352f15c3a4a27bfcfdf2a
 +                               overhead_bytes=fitted.overhead_bytes) <= 65 * G
 diff --git a/tests/hermes_cli/test_local_discrete_ram_budget.py b/tests/hermes_cli/test_local_discrete_ram_budget.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..92b2d1238217ad3f9ff443c9d7655f9103f84b7f
+index 00000000..92b2d123
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_discrete_ram_budget.py
 @@ -0,0 +1,110 @@
@@ -6105,7 +6118,7 @@ index 0000000000000000000000000000000000000000..92b2d1238217ad3f9ff443c9d7655f91
 +    assert "model-draft" not in cached.keys
 diff --git a/tests/hermes_cli/test_local_glm.py b/tests/hermes_cli/test_local_glm.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..8d49ab75a6580ef01f7754addb3df5e92c6ebda1
+index 00000000..8d49ab75
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_glm.py
 @@ -0,0 +1,371 @@
@@ -6482,7 +6495,7 @@ index 0000000000000000000000000000000000000000..8d49ab75a6580ef01f7754addb3df5e9
 +    assert seen[0].commit_room_bytes == live.commit_room_bytes
 diff --git a/tests/hermes_cli/test_local_glm_engine_placement.py b/tests/hermes_cli/test_local_glm_engine_placement.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..ea673e2c6b4612587ca7b4ebf7b640f9a7ffeba0
+index 00000000..ea673e2c
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_glm_engine_placement.py
 @@ -0,0 +1,79 @@
@@ -6567,7 +6580,7 @@ index 0000000000000000000000000000000000000000..ea673e2c6b4612587ca7b4ebf7b640f9
 +    assert result.refusal is not None and result.keys is None
 diff --git a/tests/hermes_cli/test_local_glm_placement.py b/tests/hermes_cli/test_local_glm_placement.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..9e839118d82e34c8a2882b353c5f4fda52e528aa
+index 00000000..9e839118
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_glm_placement.py
 @@ -0,0 +1,92 @@
@@ -6665,7 +6678,7 @@ index 0000000000000000000000000000000000000000..9e839118d82e34c8a2882b353c5f4fda
 +                    allocation_bytes=profile.weights_bytes)
 diff --git a/tests/hermes_cli/test_local_gpu_hardware_budget.py b/tests/hermes_cli/test_local_gpu_hardware_budget.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..2a3801389e9a4a15ae1de8d81bbe5a7561ccea20
+index 00000000..2a380138
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_gpu_hardware_budget.py
 @@ -0,0 +1,27 @@
@@ -6699,7 +6712,7 @@ index 0000000000000000000000000000000000000000..2a3801389e9a4a15ae1de8d81bbe5a75
 \ No newline at end of file
 diff --git a/tests/hermes_cli/test_local_gpu_residency.py b/tests/hermes_cli/test_local_gpu_residency.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..2ac7e4848fe4689e1752e2d104f66486b395c325
+index 00000000..2ac7e484
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_gpu_residency.py
 @@ -0,0 +1,224 @@
@@ -6928,7 +6941,7 @@ index 0000000000000000000000000000000000000000..2ac7e4848fe4689e1752e2d104f66486
 +    _write_table(second, _TENSORS[7:], {'split.count': 2, 'split.no': 1})
 +    assert read_gguf_header(first).tensor_table_complete
 diff --git a/tests/hermes_cli/test_local_launch_budget.py b/tests/hermes_cli/test_local_launch_budget.py
-index 121e158a4fcb7c3a484b9d88eff1a34e2275ec81..303b03af20da1aafdd236ee84df37ae3defacce0 100644
+index 121e158a..303b03af 100644
 --- a/tests/hermes_cli/test_local_launch_budget.py
 +++ b/tests/hermes_cli/test_local_launch_budget.py
 @@ -1,10 +1,4 @@
@@ -6974,7 +6987,7 @@ index 121e158a4fcb7c3a484b9d88eff1a34e2275ec81..303b03af20da1aafdd236ee84df37ae3
  def test_recommendations_still_price_against_capacity(hermes_home, monkeypatch):
 diff --git a/tests/hermes_cli/test_local_model_readiness.py b/tests/hermes_cli/test_local_model_readiness.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..d5a1dc50cec185fdbacfdd03f50ed894c00c3533
+index 00000000..d5a1dc50
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_model_readiness.py
 @@ -0,0 +1,644 @@
@@ -7624,7 +7637,7 @@ index 0000000000000000000000000000000000000000..d5a1dc50cec185fdbacfdd03f50ed894
 +    assert observed == [(profile_home, expected_proc)]
 diff --git a/tests/hermes_cli/test_local_model_refusal.py b/tests/hermes_cli/test_local_model_refusal.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..b8c1cce09ec2d82fceb1128425a857a4029ccf54
+index 00000000..b8c1cce0
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_model_refusal.py
 @@ -0,0 +1,146 @@
@@ -7776,7 +7789,7 @@ index 0000000000000000000000000000000000000000..b8c1cce09ec2d82fceb1128425a857a4
 +    assert runtime["source"] == "local-runtime"
 diff --git a/tests/hermes_cli/test_local_models_empty_library.py b/tests/hermes_cli/test_local_models_empty_library.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..f08c98a9a990ee36bdfe093ff147bbb4947ae32c
+index 00000000..f08c98a9
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_models_empty_library.py
 @@ -0,0 +1,119 @@
@@ -7900,7 +7913,7 @@ index 0000000000000000000000000000000000000000..f08c98a9a990ee36bdfe093ff147bbb4
 +    assert state.client.get("/api/local-models/status").json()["active_model_id"] == "Replacement"
 +    state.no_assistant.assert_not_called()
 diff --git a/tests/hermes_cli/test_local_models_routes.py b/tests/hermes_cli/test_local_models_routes.py
-index e3f28d73c20dca80cf7b89c67959468b6cc92adb..b5950da88acc01573b95e946260dc9975cc26aca 100644
+index e3f28d73..b5950da8 100644
 --- a/tests/hermes_cli/test_local_models_routes.py
 +++ b/tests/hermes_cli/test_local_models_routes.py
 @@ -157,6 +157,31 @@ def test_status_tracks_preset_spill_and_restored_window(client, tmp_path, monkey
@@ -7937,7 +7950,7 @@ index e3f28d73c20dca80cf7b89c67959468b6cc92adb..b5950da88acc01573b95e946260dc997
      assert isinstance(data["uma"], bool)
 diff --git a/tests/hermes_cli/test_local_mtp_concurrency.py b/tests/hermes_cli/test_local_mtp_concurrency.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..f4d5d0583ffdf8b79230f4b47cc08d35ecdeccbe
+index 00000000..f4d5d058
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_mtp_concurrency.py
 @@ -0,0 +1,112 @@
@@ -8055,7 +8068,7 @@ index 0000000000000000000000000000000000000000..f4d5d0583ffdf8b79230f4b47cc08d35
 +    assert bootstrap._presets_stale() is stale
 diff --git a/tests/hermes_cli/test_local_mtp_production.py b/tests/hermes_cli/test_local_mtp_production.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..15aa612c5bc6ddda9f6b7d6375718e915cb75947
+index 00000000..15aa612c
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_mtp_production.py
 @@ -0,0 +1,121 @@
@@ -8182,7 +8195,7 @@ index 0000000000000000000000000000000000000000..15aa612c5bc6ddda9f6b7d6375718e91
 +    assert reloads == [True]
 diff --git a/tests/hermes_cli/test_local_multigpu.py b/tests/hermes_cli/test_local_multigpu.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..c6d29d997c77e42e67b35a26f7b0590a5111965c
+index 00000000..c6d29d99
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_multigpu.py
 @@ -0,0 +1,210 @@
@@ -8397,7 +8410,7 @@ index 0000000000000000000000000000000000000000..c6d29d997c77e42e67b35a26f7b0590a
 +    assert growing.cuda_split_bytes[0] <= 4 * GIB - hardware._LAUNCH_HEADROOM
 +    assert growing.cuda_split_bytes[1] <= 8 * GIB - hardware._LAUNCH_HEADROOM
 diff --git a/tests/hermes_cli/test_local_preset_admission.py b/tests/hermes_cli/test_local_preset_admission.py
-index f448977bc9cba0392c9cd02b227806981eab094d..cfbe8340b301dbb1d7b005e7232a895f818cd157 100644
+index f448977b..cfbe8340 100644
 --- a/tests/hermes_cli/test_local_preset_admission.py
 +++ b/tests/hermes_cli/test_local_preset_admission.py
 @@ -40,7 +40,8 @@ def test_optional_draft_is_enabled_only_with_room_at_the_selected_window(tmp_pat
@@ -8412,7 +8425,7 @@ index f448977bc9cba0392c9cd02b227806981eab094d..cfbe8340b301dbb1d7b005e7232a895f
      monkeypatch.setattr(presets, "profile_from_gguf", lambda h: draft_profile if h.path == draft else main_profile)
 diff --git a/tests/hermes_cli/test_local_reasoning.py b/tests/hermes_cli/test_local_reasoning.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..6b6344fbfd0ecbff2189682719750cc9f1212c07
+index 00000000..6b6344fb
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_reasoning.py
 @@ -0,0 +1,175 @@
@@ -8593,7 +8606,7 @@ index 0000000000000000000000000000000000000000..6b6344fbfd0ecbff2189682719750cc9
 +    assert caps.efforts == ('low', 'medium', 'xhigh') and not caps.supports_disable
 diff --git a/tests/hermes_cli/test_local_request_queue.py b/tests/hermes_cli/test_local_request_queue.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..679899fde1912b71fa34c44bcc1d8a7f2bd8bc67
+index 00000000..679899fd
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_request_queue.py
 @@ -0,0 +1,140 @@
@@ -8739,7 +8752,7 @@ index 0000000000000000000000000000000000000000..679899fde1912b71fa34c44bcc1d8a7f
 +    assert q.try_admit(live)
 diff --git a/tests/hermes_cli/test_local_request_target.py b/tests/hermes_cli/test_local_request_target.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..adac02466e884d7215af7fe7efe46812dcea6638
+index 00000000..adac0246
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_request_target.py
 @@ -0,0 +1,83 @@
@@ -8826,8 +8839,79 @@ index 0000000000000000000000000000000000000000..adac02466e884d7215af7fe7efe46812
 +        return [{"is_processing": False}]
 +    monkeypatch.setattr("hermes_cli.local_runtime.endpoint.managed_get_json", probe)
 +    assert not target.resolve_target(runtime["base_url"], "m").idle("m")
+diff --git a/tests/hermes_cli/test_local_request_target_missing_model.py b/tests/hermes_cli/test_local_request_target_missing_model.py
+new file mode 100644
+index 00000000..29d27e1c
+--- /dev/null
++++ b/tests/hermes_cli/test_local_request_target_missing_model.py
+@@ -0,0 +1,65 @@
++"""A missing router model must not quarantine unrelated model requests."""
++import io
++import json
++import urllib.error
++from types import SimpleNamespace
++import pytest
++from hermes_cli.local_runtime import request_target as target
++
++@pytest.fixture
++def runtime(tmp_path, monkeypatch):
++    state = {"base_url": "http://127.0.0.1:12345/v1", "pid": 123, "create_time": 100,
++             "owner_pid": 12, "owner_create_time": 90, "executable": "llama-server"}
++    monkeypatch.setattr("hermes_cli.local_runtime.recovery.read_state", lambda: dict(state))
++    monkeypatch.setattr("hermes_cli.local_runtime.recovery.recorded_process", lambda value: object())
++    monkeypatch.setattr("hermes_cli.local_runtime.supervisor.state_path", lambda: tmp_path / "state.json")
++    monkeypatch.setattr(target, "scheduler_config", dict)
++    monkeypatch.setattr("hermes_cli.local_runtime.presets.read_preset_decisions", dict)
++    return state
++
++@pytest.mark.parametrize(("status", "message", "kind", "expected"), [
++    (400, "model 'missing' not found", "invalid_request_error", True),
++    (404, "model 'missing' not found", "invalid_request_error", True),
++    (401, "model 'missing' not found", "invalid_request_error", False),
++    (403, "model 'missing' not found", "invalid_request_error", False),
++    (500, "model 'missing' not found", "invalid_request_error", False),
++    (400, "model 'different' not found", "invalid_request_error", False),
++    (400, "model 'missing' not found", "server_error", False),
++    (400, "slot not found", "invalid_request_error", False),
++])
++def test_missing_model_release_requires_exact_authenticated_response(runtime, monkeypatch, status, message, kind, expected):
++    def probe(*args, **kwargs):
++        body = json.dumps({"error": {"code": status, "message": message, "type": kind}}).encode()
++        raise urllib.error.HTTPError("http://local", status, "error", {}, io.BytesIO(body))
++    monkeypatch.setattr("hermes_cli.local_runtime.endpoint.managed_get_json", probe)
++    assert target.resolve_target(runtime["base_url"], "qwen").idle("missing") is expected
++
++def test_missing_model_drain_does_not_block_next_model(runtime, tmp_path, monkeypatch):
++    from agent.local_request_scheduler import Lease
++    from hermes_cli.local_runtime.endpoint import child_query
++    resolved = target.resolve_target(runtime["base_url"], "qwen")
++    queue = resolved.queue()
++    old = queue.enqueue("missing")
++    assert queue.try_admit(old)
++    queue.finish(old, uncertain=True)
++    def probe(base, key, route, timeout_s):
++        assert route == "/slots?" + child_query("missing")
++        body = b'{"error":{"code":400,"message":"model \'missing\' not found","type":"invalid_request_error"}}'
++        raise urllib.error.HTTPError("http://local", 400, "error", {}, io.BytesIO(body))
++    monkeypatch.setattr("hermes_cli.local_runtime.endpoint.managed_get_json", probe)
++    monkeypatch.setattr("hermes_cli.local_runtime.adaptive_resources.admission_pressure", lambda: (False, ""))
++    assert resolved.idle("missing"), "Router rejection must release the failed request before a new model can run"
++    lease = Lease(resolved)
++    lease.acquire()
++    assert queue.snapshot()["draining"] == 0
++    assert queue.snapshot()["active"] == 1
++    lease.finish()
++    assert queue.snapshot()["active"] == 0
++
++def test_restart_during_missing_model_response_remains_blocked(runtime, monkeypatch):
++    def probe(*args, **kwargs):
++        runtime["create_time"] += 1
++        body = b'{"error":{"code":400,"message":"model \'missing\' not found","type":"invalid_request_error"}}'
++        raise urllib.error.HTTPError("http://local", 400, "error", {}, io.BytesIO(body))
++    monkeypatch.setattr("hermes_cli.local_runtime.endpoint.managed_get_json", probe)
++    assert not target.resolve_target(runtime["base_url"], "qwen").idle("missing")
 diff --git a/tests/hermes_cli/test_local_router_autoload.py b/tests/hermes_cli/test_local_router_autoload.py
-index aba796852c9537c5a838f898dd089536b50d45b5..ed8015bbc1378d8f14a2f9dd9b94ce4ffc1c522c 100644
+index aba79685..ed8015bb 100644
 --- a/tests/hermes_cli/test_local_router_autoload.py
 +++ b/tests/hermes_cli/test_local_router_autoload.py
 @@ -69,11 +69,11 @@ def test_context_probe_survives_an_odd_models_body(body):
@@ -8846,7 +8930,7 @@ index aba796852c9537c5a838f898dd089536b50d45b5..ed8015bbc1378d8f14a2f9dd9b94ce4f
  
      monkeypatch.setattr(sup, "_request", request, raising=False)
 diff --git a/tests/hermes_cli/test_local_runtime.py b/tests/hermes_cli/test_local_runtime.py
-index 4ccb8ad7be74bf719a89f1905c9a7a0214b25229..1cf1277cb4ccc3ad1f1f5a68fa07832104bde5d3 100644
+index 4ccb8ad7..1cf1277c 100644
 --- a/tests/hermes_cli/test_local_runtime.py
 +++ b/tests/hermes_cli/test_local_runtime.py
 @@ -108,6 +108,9 @@ class _StubHandler(BaseHTTPRequestHandler):
@@ -8869,7 +8953,7 @@ index 4ccb8ad7be74bf719a89f1905c9a7a0214b25229..1cf1277cb4ccc3ad1f1f5a68fa078321
      ("AMD Radeon RX 7900", "win", "vulkan"),
      ("intel", "win", "vulkan"),
 diff --git a/tests/hermes_cli/test_local_runtime_child_env.py b/tests/hermes_cli/test_local_runtime_child_env.py
-index 2a8eda188e419c8f6cccd82c595d5859fb7bfdca..6e5bbf5779f5a757bfdd47ed831385ee3d2caf9a 100644
+index 2a8eda18..6e5bbf57 100644
 --- a/tests/hermes_cli/test_local_runtime_child_env.py
 +++ b/tests/hermes_cli/test_local_runtime_child_env.py
 @@ -12,7 +12,7 @@ import os
@@ -8905,7 +8989,7 @@ index 2a8eda188e419c8f6cccd82c595d5859fb7bfdca..6e5bbf5779f5a757bfdd47ed831385ee
 +    assert base["NVIDIA_TF32_OVERRIDE"] == "1"
 diff --git a/tests/hermes_cli/test_local_updated_draft_placement.py b/tests/hermes_cli/test_local_updated_draft_placement.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..c3ceeb98e95a55de2adba92c83f8d35cc06825c9
+index 00000000..c3ceeb98
 --- /dev/null
 +++ b/tests/hermes_cli/test_local_updated_draft_placement.py
 @@ -0,0 +1,46 @@
@@ -8958,7 +9042,7 @@ index 0000000000000000000000000000000000000000..c3ceeb98e95a55de2adba92c83f8d35c
 \ No newline at end of file
 diff --git a/tests/hermes_cli/test_moe_host_spill_admission.py b/tests/hermes_cli/test_moe_host_spill_admission.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..dadbcacf56634ef492ad36025ef6654630a044df
+index 00000000..dadbcacf
 --- /dev/null
 +++ b/tests/hermes_cli/test_moe_host_spill_admission.py
 @@ -0,0 +1,141 @@
@@ -9105,7 +9189,7 @@ index 0000000000000000000000000000000000000000..dadbcacf56634ef492ad36025ef66546
 +    assert restarts == []
 diff --git a/tests/hermes_cli/test_multigpu_optional_smi.py b/tests/hermes_cli/test_multigpu_optional_smi.py
 new file mode 100644
-index 0000000000000000000000000000000000000000..e805ebc8c156100c83d033985e3db5eb5e149784
+index 00000000..e805ebc8
 --- /dev/null
 +++ b/tests/hermes_cli/test_multigpu_optional_smi.py
 @@ -0,0 +1,33 @@
@@ -9143,7 +9227,7 @@ index 0000000000000000000000000000000000000000..e805ebc8c156100c83d033985e3db5eb
 +    budget = hardware.probe_budget(planning=True)
 +    assert budget.uma and not budget.cuda_devices
 diff --git a/tui_gateway/contracts/canonical.py b/tui_gateway/contracts/canonical.py
-index d71c449a32d9b2eeb1aef620f36639e3b2ecd079..9a003c066eff582f3fb8d62962ea541f06838ae1 100644
+index d71c449a..9a003c06 100644
 --- a/tui_gateway/contracts/canonical.py
 +++ b/tui_gateway/contracts/canonical.py
 @@ -231,6 +231,7 @@ class SessionStats(Result):
@@ -9155,7 +9239,7 @@ index d71c449a32d9b2eeb1aef620f36639e3b2ecd079..9a003c066eff582f3fb8d62962ea541f
      rate_limit: dict[str, JsonValue] | None = None
      active_subagents: int
 diff --git a/tui_gateway/contracts/common.py b/tui_gateway/contracts/common.py
-index 33f6d75fd8ad052916a0903aa3e9833e3321d698..6bbbb42d98efd547fdd3bace3c545c6999da05f7 100644
+index 33f6d75f..6bbbb42d 100644
 --- a/tui_gateway/contracts/common.py
 +++ b/tui_gateway/contracts/common.py
 @@ -38,6 +38,7 @@ class Usage(OpenModel):
@@ -9167,7 +9251,7 @@ index 33f6d75fd8ad052916a0903aa3e9833e3321d698..6bbbb42d98efd547fdd3bace3c545c69
      dev_credits_spent_micros: int | None = None
      cost_usd: float | None = None
 diff --git a/tui_gateway/contracts/events.py b/tui_gateway/contracts/events.py
-index 5ab556f2f73c42287e3dd3e2a9ecd019c68f1609..08be06d5ad1a76f57d40bdf7cec3dbe99fceb530 100644
+index 5ab556f2..08be06d5 100644
 --- a/tui_gateway/contracts/events.py
 +++ b/tui_gateway/contracts/events.py
 @@ -15,6 +15,8 @@ closed, so a drifted emitter fails the suite (``registry.check_payload`` raises
@@ -9188,7 +9272,7 @@ index 5ab556f2f73c42287e3dd3e2a9ecd019c68f1609..08be06d5ad1a76f57d40bdf7cec3dbe9
      rate_limit: dict[str, JsonValue] | None = None
      active_subagents: int | None = None
 diff --git a/tui_gateway/server.py b/tui_gateway/server.py
-index 5f86ceeb84b84aef7c8f7d4ff72a3ab9ee32d06f..79fa0be107d61ab7a63c11711b3a03e91905154e 100644
+index 5f86ceeb..79fa0be1 100644
 --- a/tui_gateway/server.py
 +++ b/tui_gateway/server.py
 @@ -1421,6 +1421,12 @@ def _get_usage(agent) -> dict:
@@ -9206,7 +9290,7 @@ index 5f86ceeb84b84aef7c8f7d4ff72a3ab9ee32d06f..79fa0be107d61ab7a63c11711b3a03e9
          from tools.async_delegation import active_count as _async_active_count
 diff --git a/website/docs/developer-guide/local-cuda-placement.md b/website/docs/developer-guide/local-cuda-placement.md
 new file mode 100644
-index 0000000000000000000000000000000000000000..f64894a74ca62043e2e1746c3ec16185b4c7bae7
+index 00000000..f64894a7
 --- /dev/null
 +++ b/website/docs/developer-guide/local-cuda-placement.md
 @@ -0,0 +1,51 @@

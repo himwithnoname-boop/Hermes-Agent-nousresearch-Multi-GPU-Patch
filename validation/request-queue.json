@@ -1,0 +1,15 @@
+{
+  "status": "passed",
+  "scenario": "An unavailable model must release its quarantined request so another installed model can run.",
+  "beforeCorrection": {
+    "failed": 3,
+    "passed": 7
+  },
+  "afterCorrection": {
+    "passed": 57,
+    "failed": 0,
+    "files": 4
+  },
+  "ownershipAndAuthenticationGuardsRetained": true,
+  "ramAndModelSettingsChanged": false
+}

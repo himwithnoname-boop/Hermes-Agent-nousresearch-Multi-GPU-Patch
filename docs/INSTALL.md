@@ -51,3 +51,5 @@ python -m hermes_cli.main desktop --build-only --force-build
 This builds the packaged application without launching it. Applying source alone does not replace an existing packaged Desktop. After the build succeeds, launch Hermes normally. New completions use the corrected rate; old stored conversations do not acquire missing engine timings retroactively.
 
 To reverse an otherwise unchanged manual installation, close Hermes, run `git apply --reverse --check` followed by `git apply --reverse` against the same patch you applied, then rebuild Desktop with the command above. For installer source recovery, inspect the local receipt and restore only its listed files from `original/` after confirming no later edits; a `null` before-hash denotes a file newly added by the patch. Rebuild afterward. Keep backups until the recovered installation has been verified.
+
+The installer can also update the request-queue module in an existing installation after verifying the prior receipt and exact known source hash. Its backup is retained, repeat installs are safe, and custom edits are refused. For an interrupted conversation, use [the upstream recovery command](RECOVERY.md).

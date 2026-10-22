@@ -12,7 +12,7 @@ This is the project's **first public release**. It is independent of [Nous Resea
 - Computes capacity-weighted layer splits and bounds memory grants by each device's available memory.
 - Separates dedicated VRAM, host RAM and Windows commit limits, including model spill and prompt-cache budgets.
 - Validates telemetry and invalidates stale budgets when device topology changes.
-- Coordinates request admission, cancellation and model lifecycle operations. Adaptive refits run only while models are unloaded.
+- Coordinates request admission, cancellation and model lifecycle operations. An unavailable model releases its failed admission so other installed models can run. Adaptive refits run only while models are unloaded.
 - Preserves upstream DFlash, GGUF/recurrent metadata and context behavior.
 - Displays generation t/s using accepted completion tokens and native engine generation time. A `~` prefix identifies whole-request throughput when native timings are unavailable.
 
@@ -59,3 +59,5 @@ No matched stock-versus-patched inference benchmark has been performed, so no pe
 - `checksums.json`: SHA-256 file inventory.
 
 Licensed under [MIT](LICENSE), retaining upstream notices. Report reproducible problems through GitHub issues and omit credentials or personal data from diagnostics.
+
+For a chat paused after a gateway restart, see [interrupted-chat recovery](docs/RECOVERY.md).
