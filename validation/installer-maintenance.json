@@ -1,0 +1,164 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "label": "v0.22.3-stock-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-stock-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-custom-edit-refused",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.3-restored-stock-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-reinstall-after-restore",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-reinstall-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-reinstall-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-already-applied-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-adopt-existing-patch",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-adopt-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.3-adopt-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-stock-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-stock-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-custom-edit-refused",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.4-restored-stock-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-reinstall-after-restore",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-reinstall-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-reinstall-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-already-applied-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-adopt-existing-patch",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-adopt-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.4-adopt-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-stock-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-stock-install",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-custom-edit-refused",
+      "returncode": 1
+    },
+    {
+      "label": "v0.22.5-restored-stock-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-reinstall-after-restore",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-reinstall-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-reinstall-complete",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-already-applied-readonly",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-adopt-existing-patch",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-adopt-repeat",
+      "returncode": 0
+    },
+    {
+      "label": "v0.22.5-adopt-complete",
+      "returncode": 0
+    }
+  ],
+  "supportedReleases": 3,
+  "readOnlyChecksWriteNothing": true,
+  "oldBackupsRetained": true
+}

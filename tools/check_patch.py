@@ -1,6 +1,7 @@
 """Read-only baseline and patch applicability check for an isolated Hermes checkout."""
 from __future__ import annotations
 import argparse
+import json
 import os
 from pathlib import Path
 import subprocess
@@ -12,7 +13,8 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("checkout", type=Path)
     args = parser.parse_args()
-    patch = Path(__file__).resolve().parents[1] / "patches/multigpu-v0.22.3.patch"
+    package = Path(__file__).resolve().parents[1]
+    supported = json.loads((package / "installer/compatibility.json").read_text(encoding="utf-8"))["baselines"]
     env = dict(os.environ, GIT_OPTIONAL_LOCKS="0", GIT_TERMINAL_PROMPT="0")
     def git(*command: str) -> str:
         result = subprocess.run(["git", "-C", str(args.checkout), *command],
@@ -21,8 +23,10 @@ def main() -> int:
             raise RuntimeError(result.stderr.strip() or "Git validation failed.")
         return result.stdout.strip()
     try:
-        if git("rev-parse", "HEAD") not in BASES:
-            raise RuntimeError("Unsupported revision. Use a supported v0.22.3 or v0.22.4 baseline.")
+        head = git("rev-parse", "HEAD")
+        if head not in supported:
+            raise RuntimeError("Unsupported revision; check installer/compatibility.json for validated releases.")
+        patch = package / "patches" / supported[head]["patch"]
         if git("status", "--porcelain", "--untracked-files=normal"):
             raise RuntimeError("Checkout is not clean. Use a separate clean checkout.")
         git("apply", "--check", "--binary", str(patch))

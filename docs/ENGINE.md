@@ -42,3 +42,5 @@ Restart the affected source-built Hermes instance after the engine is installed 
 Use the [official b11706 release assets](https://github.com/ggml-org/llama.cpp/releases/tag/b11706) matching the operating system, architecture and CUDA/driver requirements. Windows CUDA server archives and matching `cudart` archives are separate assets. The managed commands above select the artifacts defined by Hermes's CUDA package; a manual download alone does not register an engine with PM.
 
 The public patch supplies hardware-adaptive planning, not CUDA drivers, model weights or a bundled engine. The operating system's CUDA driver must support the selected build. Future engine versions need compatibility review before the restricted GLM mapping is enabled.
+
+Hermes v0.22.5 retains the b11671 upstream CUDA pin. The reviewed multi-card GLM placement gate remains b11706. The installer does not download, replace or repin an engine.

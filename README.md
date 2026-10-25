@@ -2,9 +2,9 @@
 
 > **Required for custom multi-GPU GLM-5.3 placement: llama.cpp b11706.** The engine is **not bundled**. Stock Hermes v0.22.3 pins b11671; this patch does not change that pin. Follow the [engine setup guide](docs/ENGINE.md) before using custom GLM placement. Other CUDA models are not universally restricted to b11706.
 
-A community enhancement for **Hermes Agent v0.22.3 and v0.22.4** that adds hardware-adaptive CUDA placement, memory budgeting and request coordination for local llama.cpp models. It discovers the selected engine's visible GPUs and adapts to unequal capacities and available memory.
+A community enhancement for **Hermes Agent v0.22.3, v0.22.4 and v0.22.5** that adds hardware-adaptive CUDA placement, memory budgeting and request coordination for local llama.cpp models. It discovers the selected engine's visible GPUs and adapts to unequal capacities and available memory.
 
-This is the project's **first public release**. It is independent of [Nous Research](https://github.com/NousResearch/hermes-agent) and preserves the upstream features of both supported versions.
+This is the project's **first public release**. It is independent of [Nous Research](https://github.com/NousResearch/hermes-agent) and preserves the upstream features of supported versions.
 
 ## Features
 
@@ -22,7 +22,7 @@ See [design and limits](docs/DESIGN.md), [validation](docs/VALIDATION.md) and [p
 
 | Item | Requirement |
 |---|---|
-| Hermes baselines | v0.22.3 (`5b147ab036d6d19131bff8d20701b5001eab844a`) and v0.22.4 (`4d04303818b61bf3aa09278af48356315515965b`) |
+| Hermes baselines | v0.22.3 (`5b147ab036d6d19131bff8d20701b5001eab844a`) and v0.22.4 (`4d04303818b61bf3aa09278af48356315515965b`), v0.22.5 (`bf0203a794a07aac3ff764972ab9087baa4e4f4e`) |
 | Accelerators | CUDA devices visible to the selected managed llama.cpp engine |
 | GPU count and capacity | Discovered at runtime |
 | Custom multi-card GLM-5.3 mapping | llama.cpp b11706 |
@@ -33,7 +33,7 @@ The planner adapts to hardware and memory pressure. It does not autotune through
 
 ## Installation
 
-**v0.22.4 is supported.** The source patch applies unchanged, and the included installer accepts either exact baseline above. After an upstream update, check whether your local changes were restored or left in a stash. If the update produced stock source, reapply the patch and rebuild Desktop; an upstream update does not itself install this enhancement. Do not copy the `source/` snapshot over a newer checkout.
+**v0.22.5 is supported.** The installer selects the reviewed patch for the exact upstream revision. v0.22.3/v0.22.4 use their shared patch; v0.22.5 uses its own patch. After an upstream update, check whether your local changes were restored or left in a stash. If the update produced stock source, reapply the patch and rebuild Desktop; an upstream update does not itself install this enhancement. Do not copy the `source/` snapshot over a newer checkout.
 
 Download and extract the [release ZIP](https://github.com/himwithnoname-boop/Hermes-Agent-nousresearch-Multi-GPU-Patch/releases/latest). Finish jobs and close Hermes Desktop and its gateway, then open `installer/Install.cmd`. The installer prompts for the folder containing `hermes_cli/main.py`, checks compatibility, backs up source files locally and rebuilds Desktop without launching it. Start Hermes normally after success.
 
@@ -61,3 +61,5 @@ No matched stock-versus-patched inference benchmark has been performed, so no pe
 Licensed under [MIT](LICENSE), retaining upstream notices. Report reproducible problems through GitHub issues and omit credentials or personal data from diagnostics.
 
 For a chat paused after a gateway restart, see [interrupted-chat recovery](docs/RECOVERY.md).
+
+The installer reads Windows gateway identity files with compatible file sharing, detects an already-applied patch, and creates a new backup when stock source has been restored by an update. Existing backups are retained. `-CheckOnly` is read-only and may inspect compatibility while Hermes is running; actual installation still requires a stopped runtime. Unknown upstream revisions are refused until validated.

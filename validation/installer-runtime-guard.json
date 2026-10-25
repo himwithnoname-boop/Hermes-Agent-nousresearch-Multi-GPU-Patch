@@ -1,0 +1,189 @@
+{
+  "sha256": "eb12d7631f548b7b46901090a1228f4aeab24f813544ba401e012fa32ad1963d",
+  "powershell": "5.1.26100.9711",
+  "passed": 45,
+  "failed": 0,
+  "cases": [
+    {
+      "name": "exact installed executable refuses",
+      "passed": true
+    },
+    {
+      "name": "path prefix collision stays independent",
+      "passed": true
+    },
+    {
+      "name": "case-insensitive Windows containment",
+      "passed": true
+    },
+    {
+      "name": "absolute Python script inside source refuses",
+      "passed": true
+    },
+    {
+      "name": "code string mentioning source is not identity",
+      "passed": true
+    },
+    {
+      "name": "unrelated argument mentioning source is not identity",
+      "passed": true
+    },
+    {
+      "name": "exact Hermes module ownership uncertain refuses",
+      "passed": true
+    },
+    {
+      "name": "module prefix collision does not refuse",
+      "passed": true
+    },
+    {
+      "name": "unrelated Python module does not refuse",
+      "passed": true
+    },
+    {
+      "name": "relative Hermes entrypoint refuses uncertainty",
+      "passed": true
+    },
+    {
+      "name": "Python option arguments are skipped correctly",
+      "passed": true
+    },
+    {
+      "name": "external Hermes Desktop candidate refuses ownership uncertainty",
+      "passed": true
+    },
+    {
+      "name": "unrelated named process with Hermes text ignored",
+      "passed": true
+    },
+    {
+      "name": "unreadable candidate executable refuses",
+      "passed": true
+    },
+    {
+      "name": "unreadable Python command refuses",
+      "passed": true
+    },
+    {
+      "name": "unreadable unrelated system process ignored",
+      "passed": true
+    },
+    {
+      "name": "matching PID and birth refuses",
+      "passed": true
+    },
+    {
+      "name": "verified PID reuse is stale",
+      "passed": true
+    },
+    {
+      "name": "missing recorded birth refuses uncertainty",
+      "passed": true
+    },
+    {
+      "name": "missing observed birth refuses uncertainty",
+      "passed": true
+    },
+    {
+      "name": "exited PID stale record is allowed",
+      "passed": true
+    },
+    {
+      "name": "two-second fingerprint tolerance preserved",
+      "passed": true
+    },
+    {
+      "name": "empty state has no identities",
+      "passed": true
+    },
+    {
+      "name": "empty JSON arrays retained",
+      "passed": true
+    },
+    {
+      "name": "empty active session entries retained",
+      "passed": true
+    },
+    {
+      "name": "ledger epoch birth parsed",
+      "passed": true
+    },
+    {
+      "name": "gateway centisecond birth parsed",
+      "passed": true
+    },
+    {
+      "name": "legacy gateway PID retains uncertainty",
+      "passed": true
+    },
+    {
+      "name": "empty gateway lock harmless",
+      "passed": true
+    },
+    {
+      "name": "profile active session discovered",
+      "passed": true
+    },
+    {
+      "name": "router and owner both checked",
+      "passed": true
+    },
+    {
+      "name": "background process checkpoint discovered",
+      "passed": true
+    },
+    {
+      "name": "remote process completion uncertainty refuses",
+      "passed": true
+    },
+    {
+      "name": "canonical multiplex host discovered",
+      "passed": true
+    },
+    {
+      "name": "unrelated canonical host excluded by exact home",
+      "passed": true
+    },
+    {
+      "name": "canonical host missing ownership refuses",
+      "passed": true
+    },
+    {
+      "name": "malformed metadata refuses without secret output",
+      "passed": true
+    },
+    {
+      "name": "null metadata refuses",
+      "passed": true
+    },
+    {
+      "name": "malformed ledger schema refuses",
+      "passed": true
+    },
+    {
+      "name": "invalid process birth refuses",
+      "passed": true
+    },
+    {
+      "name": "real own-process PID and birth fixture refuses without termination",
+      "passed": true
+    },
+    {
+      "name": "second inventory catches newly started process",
+      "passed": true
+    },
+    {
+      "name": "clean two-pass fixture succeeds",
+      "passed": true
+    },
+    {
+      "name": "unreadable process inventory refuses",
+      "passed": true
+    },
+    {
+      "name": "empty process inventory refuses",
+      "passed": true
+    }
+  ],
+  "noProcessLifecycleActions": true
+}

@@ -1,0 +1,20 @@
+{
+  "status": "passed",
+  "upstreamVersion": "v0.22.5",
+  "upstreamCommit": "bf0203a794a07aac3ff764972ab9087baa4e4f4e",
+  "pythonPassed": 668,
+  "upstreamSkipped": 4,
+  "nonStreamingPassed": 628,
+  "streamingPassed": 40,
+  "streamingCaseCount": 44,
+  "streamingExecution": "All cases completed in six independent selections after the monolithic file exceeded its time budget.",
+  "installerChecksPassed": 39,
+  "quiescenceChecksPassed": 45,
+  "nativeWindowsSharedLockReproductionPassed": true,
+  "staticChecksPassed": 12,
+  "runtimeDeploymentPerformed": false,
+  "desktopBuildPerformed": false,
+  "reviewedOverlappingPaths": 22,
+  "sourcePaths": 92,
+  "upstreamHeaderCaptureAndPlanGaugePreserved": true
+}

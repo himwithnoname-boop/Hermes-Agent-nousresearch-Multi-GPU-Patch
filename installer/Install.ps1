@@ -12,7 +12,7 @@ if(-not(Test-Path -LiteralPath (Join-Path $SourceRoot 'hermes_cli\main.py') -Pat
 $pins=Get-Content -LiteralPath (Join-Path $PSScriptRoot 'checksums.json') -Raw | ConvertFrom-Json
 foreach($p in $pins.PSObject.Properties){if((Get-FileHash -LiteralPath (Join-Path $PSScriptRoot $p.Name) -Algorithm SHA256).Hash.ToLowerInvariant() -cne $p.Value){throw "Integrity failure: $($p.Name)"}}
 Import-Module (Join-Path $PSScriptRoot 'RuntimeQuiescence.psm1') -Force
-Assert-HermesRuntimeQuiescent -SourceRoot $SourceRoot
+if(-not $CheckOnly){Assert-HermesRuntimeQuiescent -SourceRoot $SourceRoot}
 if(-not $PythonExecutable){
  $state=Split-Path -Parent $SourceRoot
  $hash=[Security.Cryptography.SHA256]::Create()

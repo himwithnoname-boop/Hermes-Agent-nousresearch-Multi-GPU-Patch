@@ -1,4 +1,4 @@
-﻿Set-StrictMode -Version Latest
+Set-StrictMode -Version Latest
 $ErrorActionPreference = 'Stop'
 
 function ConvertTo-HermesFullPath {
@@ -111,7 +111,27 @@ function Read-HermesIdentityJson {
     try {
         $item = Get-Item -LiteralPath $Path -Force
         if ($item.PSIsContainer -or ($item.Attributes -band [IO.FileAttributes]::ReparsePoint)) { throw 'Not a plain state file.' }
-        $text = [IO.File]::ReadAllText($Path)
+        # A gateway keeps a writable handle open. Readers must share write/delete access.
+        $stream = $null
+        try {
+            $stream = [IO.FileStream]::new($Path, [IO.FileMode]::Open, [IO.FileAccess]::Read,
+                ([IO.FileShare]::ReadWrite -bor [IO.FileShare]::Delete))
+            $length = $stream.Length
+            if ($length -gt 4194304) { throw 'Identity state is too large to inspect safely.' }
+            $bytes = New-Object byte[] ([int]$length)
+            $offset = 0
+            while ($offset -lt $length) {
+                $read = $stream.Read($bytes, $offset, [int]($length - $offset))
+                if ($read -eq 0) { throw 'Identity state changed while being read; retry.' }
+                $offset += $read
+            }
+            $after = Get-Item -LiteralPath $Path -Force
+            if (($after.Attributes -band [IO.FileAttributes]::ReparsePoint) -or
+                $after.Length -ne $length -or $after.LastWriteTimeUtc.Ticks -ne $item.LastWriteTimeUtc.Ticks) {
+                throw 'Identity state changed while being read; retry.'
+            }
+            $text = ([Text.UTF8Encoding]::new($false, $true)).GetString($bytes).TrimStart([char]0xFEFF)
+        } finally { if ($null -ne $stream) { $stream.Dispose() } }
         if ([string]::IsNullOrWhiteSpace($text)) {
             if ($AllowEmpty) { return $null }
             throw 'Empty identity state.'
@@ -121,7 +141,7 @@ function Read-HermesIdentityJson {
         if ($null -eq $value) { throw 'Null identity state.' }
         # Preserve an empty JSON array instead of losing it through pipeline enumeration.
         return ,$value
-    } catch { throw "Cannot verify Hermes identity state '$Path': unreadable, malformed, or redirected state." }
+    } catch { throw "Cannot verify Hermes identity state '$Path': unreadable, malformed, or redirected state. If Hermes is open, finish work, close Desktop and run hermes gateway stop before retrying. Do not delete its lock files." }
 }
 
 function New-HermesIdentityRecord {

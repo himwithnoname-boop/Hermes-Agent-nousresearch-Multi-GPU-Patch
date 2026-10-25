@@ -1,0 +1,9 @@
+﻿{
+    "status":  "passed",
+    "originalFailureReproduced":  true,
+    "sharedWriterWithByteRangeLockRead":  true,
+    "liveIdentityStillBlocks":  true,
+    "exclusiveFileStillBlocks":  true,
+    "malformedStateStillBlocks":  true,
+    "noStateRemoved":  true
+}

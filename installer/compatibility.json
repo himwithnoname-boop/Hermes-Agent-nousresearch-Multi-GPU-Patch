@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "baselines": {
+    "5b147ab036d6d19131bff8d20701b5001eab844a": {
+      "version": "v0.22.3",
+      "patch": "multigpu-v0.22.3.patch"
+    },
+    "4d04303818b61bf3aa09278af48356315515965b": {
+      "version": "v0.22.4",
+      "patch": "multigpu-v0.22.3.patch"
+    },
+    "bf0203a794a07aac3ff764972ab9087baa4e4f4e": {
+      "version": "v0.22.5",
+      "patch": "multigpu-v0.22.5.patch"
+    }
+  }
+}

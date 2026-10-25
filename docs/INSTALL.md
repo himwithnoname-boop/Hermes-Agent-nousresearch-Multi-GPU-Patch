@@ -53,3 +53,9 @@ This builds the packaged application without launching it. Applying source alone
 To reverse an otherwise unchanged manual installation, close Hermes, run `git apply --reverse --check` followed by `git apply --reverse` against the same patch you applied, then rebuild Desktop with the command above. For installer source recovery, inspect the local receipt and restore only its listed files from `original/` after confirming no later edits; a `null` before-hash denotes a file newly added by the patch. Rebuild afterward. Keep backups until the recovered installation has been verified.
 
 The installer can also update the request-queue module in an existing installation after verifying the prior receipt and exact known source hash. Its backup is retained, repeat installs are safe, and custom edits are refused. For an interrupted conversation, use [the upstream recovery command](RECOVERY.md).
+
+## Hermes v0.22.5
+
+The installer selects `multigpu-v0.22.5.patch` for exact upstream `bf0203a794a07aac3ff764972ab9087baa4e4f4e`. For manual installation, follow the same clean-checkout procedure above using that commit and patch filename. Keep the v0.22.3 source snapshot as a reference; do not copy it over v0.22.5. The v0.22.5 port retains upstream response-header capture and plan-usage gauges.
+
+For installation, finish work, close Desktop, and run `hermes gateway stop` locally if the gateway remains active. The installer never deletes a held lock or stops a process automatically. A readable held identity now produces an activity refusal instead of a malformed-file error. If an upstream update restored stock source, rerunning the installer creates a separate backup rather than overwriting the prior receipt.
