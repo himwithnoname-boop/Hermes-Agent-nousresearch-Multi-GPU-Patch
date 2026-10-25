@@ -36,3 +36,7 @@ The unavailable-model-to-next-model regression fails on the uncorrected implemen
 The v0.22.5-specific source port retains upstream response-header capture, plan-usage gauges and all non-overlapping upstream changes. **668 Python tests passed, with 4 upstream skips**, including all 44 streaming cases executed in independent selections after a monolithic run exceeded its time budget. All 12 upstream checks passed. No Desktop application build or native inference benchmark was performed for this installer maintenance.
 
 **39 installer checks** cover all three supported versions, clean installs, repeat installs, source restored by an updater, preservation of earlier backups, adoption of an already-applied patch, and refusal of unknown custom edits. **45 guard checks** passed. A native Windows fixture reproduced the original shared-writer/byte-range-lock failure and confirmed that the corrected shared reader reads the identity while live PID/birth still blocks installation. Exclusive unreadable and malformed state remain refusals. See [v0.22.5 evidence](../validation/v0.22.5.json).
+
+## Executable preservation
+
+The actual Windows PowerShell installer was run for install and repeat-install against an isolated v0.22.5 checkout. Existing EXE, Desktop bundle and renderer bytes **and modification timestamps** remained identical. No Desktop build, dependency installation or Windows security change was invoked. See [source-only installer verification](../validation/source-only-installer.json).

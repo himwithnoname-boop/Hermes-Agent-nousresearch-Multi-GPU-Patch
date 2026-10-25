@@ -21,7 +21,7 @@ def upgrade_queue(root,kit,cache,receipt,r,action):
  if sha(backup) not in QUEUE_BEFORE:raise RuntimeError('Queue backup integrity failure.')
  temporary=p.with_name(p.name+'.'+uuid.uuid4().hex+'.tmp');temporary.write_bytes(desired)
  if sha(p)!=current:raise RuntimeError('Queue source changed during update.')
- os.replace(temporary,p);r['after'][QUEUE_PATH]=wanted;r['status']='source-applied-desktop-build-required'
+ os.replace(temporary,p);r['after'][QUEUE_PATH]=wanted;r['status']='source-applied'
  temporary=receipt.with_name('receipt.'+uuid.uuid4().hex+'.tmp');temporary.write_text(json.dumps(r,indent=2),encoding='utf-8');os.replace(temporary,receipt)
  print('Request-queue correction applied; original source retained in the installation backup.')
 
@@ -48,7 +48,7 @@ def main():
   if 'after' not in r:
    if git(root,'apply','--reverse','--check','--',kit/release['patch']).returncode==0 and all(sha(root/p)==sha(kit.parent/'source'/p) for p in r['before'] if (kit.parent/'source'/p).exists() and version!='v0.22.5'):
     if v.action=='check':print('Applied source detected; receipt can be recovered.');return
-    r['after']={p:sha(root/p) for p in r['before']};r['status']='source-applied-desktop-build-required';receipt.write_text(json.dumps(r,indent=2),encoding='utf-8')
+    r['after']={p:sha(root/p) for p in r['before']};r['status']='source-applied';receipt.write_text(json.dumps(r,indent=2),encoding='utf-8')
    else:raise RuntimeError('Interrupted source installation. Backups retained; reconcile before retry: '+str(cache))
   mismatches=[p for p,h in r['after'].items() if sha(root/p)!=h]
   resumed=(mismatches==[QUEUE_PATH] and r['after'][QUEUE_PATH] in QUEUE_BEFORE and sha(root/QUEUE_PATH)==sha(kit/'request_target.py'))
@@ -88,7 +88,7 @@ def main():
  if not adopted:
   result=git(root,'apply','--',selected)
   if result.returncode:raise RuntimeError('Source apply failed; backups retained. '+result.stderr)
- r.update(adoptedExistingPatch=adopted,status='source-applied-desktop-build-required',after={p:sha(root/p) for p in paths});receipt.write_text(json.dumps(r,indent=2),encoding='utf-8')
+ r.update(adoptedExistingPatch=adopted,status='source-applied',after={p:sha(root/p) for p in paths});receipt.write_text(json.dumps(r,indent=2),encoding='utf-8')
  print('Source applied. Backups and receipt: '+str(cache))
 if __name__=='__main__':
  try:main()

@@ -33,11 +33,6 @@ $action=if($CheckOnly){'check'}else{'apply'}
 if($LASTEXITCODE -ne 0){throw 'Source update failed. See the displayed error.'}
 if($CheckOnly){return}
 Assert-HermesRuntimeQuiescent -SourceRoot $SourceRoot
-Push-Location -LiteralPath $SourceRoot
-try{
- & $PythonExecutable -m hermes_cli.main desktop --build-only --force-build
- if($LASTEXITCODE -ne 0){throw 'Desktop build failed. Source backups are retained. Fix the build error and rerun this installer; it will resume without reapplying the source patch.'}
-}finally{Pop-Location}
 & $PythonExecutable -X utf8 $helper complete $SourceRoot
-if($LASTEXITCODE -ne 0){throw 'Build completed but receipt update failed.'}
-Write-Host 'Update complete. Start Hermes normally. No application was launched by this installer.'
+if($LASTEXITCODE -ne 0){throw 'Source patch applied but receipt update failed.'}
+Write-Host 'Source patch complete. Existing Desktop executables and bundles were left untouched. Restart Hermes normally when ready.'

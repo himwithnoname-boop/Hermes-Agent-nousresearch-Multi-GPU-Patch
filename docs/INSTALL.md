@@ -42,7 +42,7 @@ git -C hermes-agent apply ../Hermes-Agent-nousresearch-Multi-GPU-Patch/patches/m
 
 Confirm the checkout is clean and at the exact supported commit selected above. The patch filename identifies its original source baseline and applies unchanged to both supported versions; the `source/` directory is a v0.22.3 reference snapshot, not a replacement tree for v0.22.4. If a check fails, stop and reconcile the differences; do not force the patch or overwrite custom files with the `source/` snapshot.
 
-Follow the pinned upstream [development setup](https://github.com/NousResearch/hermes-agent/blob/5b147ab036d6d19131bff8d20701b5001eab844a/CONTRIBUTING.md#development-setup) and [Desktop build guide](https://github.com/NousResearch/hermes-agent/blob/5b147ab036d6d19131bff8d20701b5001eab844a/apps/desktop/BUILDING.md). From `hermes-agent`, using that installation's Python environment, run:
+Follow the pinned upstream [development setup](https://github.com/NousResearch/hermes-agent/blob/5b147ab036d6d19131bff8d20701b5001eab844a/CONTRIBUTING.md#development-setup) and [Desktop build guide](https://github.com/NousResearch/hermes-agent/blob/5b147ab036d6d19131bff8d20701b5001eab844a/apps/desktop/BUILDING.md). The normal installer does not build or replace Desktop. The following command is an **optional, explicit Desktop UI rebuild**, not a required source-install step. It can produce an unsigned executable that Smart App Control blocks. Use a trusted publisher package on systems enforcing publisher trust. Only if you deliberately choose a local UI build, from `hermes-agent` run:
 
 ```text
 python -m hermes_cli.main desktop --build-only --force-build
@@ -50,7 +50,7 @@ python -m hermes_cli.main desktop --build-only --force-build
 
 This builds the packaged application without launching it. Applying source alone does not replace an existing packaged Desktop. After the build succeeds, launch Hermes normally. New completions use the corrected rate; old stored conversations do not acquire missing engine timings retroactively.
 
-To reverse an otherwise unchanged manual installation, close Hermes, run `git apply --reverse --check` followed by `git apply --reverse` against the same patch you applied, then rebuild Desktop with the command above. For installer source recovery, inspect the local receipt and restore only its listed files from `original/` after confirming no later edits; a `null` before-hash denotes a file newly added by the patch. Rebuild afterward. Keep backups until the recovered installation has been verified.
+To reverse an otherwise unchanged manual installation, close Hermes, run `git apply --reverse --check` followed by `git apply --reverse` against the same patch you applied, then rebuild Desktop with the command above. For installer source recovery, inspect the local receipt and restore only its listed files from `original/` after confirming no later edits; a `null` before-hash denotes a file newly added by the patch. Restart the gateway afterward; any UI rebuild is a separate explicit choice. Keep backups until the recovered installation has been verified.
 
 The installer can also update the request-queue module in an existing installation after verifying the prior receipt and exact known source hash. Its backup is retained, repeat installs are safe, and custom edits are refused. For an interrupted conversation, use [the upstream recovery command](RECOVERY.md).
 
@@ -59,3 +59,7 @@ The installer can also update the request-queue module in an existing installati
 The installer selects `multigpu-v0.22.5.patch` for exact upstream `bf0203a794a07aac3ff764972ab9087baa4e4f4e`. For manual installation, follow the same clean-checkout procedure above using that commit and patch filename. Keep the v0.22.3 source snapshot as a reference; do not copy it over v0.22.5. The v0.22.5 port retains upstream response-header capture and plan-usage gauges.
 
 For installation, finish work, close Desktop, and run `hermes gateway stop` locally if the gateway remains active. The installer never deletes a held lock or stops a process automatically. A readable held identity now produces an activity refusal instead of a malformed-file error. If an upstream update restored stock source, rerunning the installer creates a separate backup rather than overwriting the prior receipt.
+
+## Windows publisher trust
+
+Source installation never modifies a Desktop executable or packaged bundle. It does not disable or bypass Smart App Control. A source patch cannot give a rebuilt executable a trusted publisher signature. If a previous local build is blocked, preserve it and restore a trusted Desktop distribution through the official publisher; do not disable Windows protection as part of patch installation. Chats, models and user configuration are outside the installer payload.

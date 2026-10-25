@@ -35,9 +35,9 @@ The planner adapts to hardware and memory pressure. It does not autotune through
 
 **v0.22.5 is supported.** The installer selects the reviewed patch for the exact upstream revision. v0.22.3/v0.22.4 use their shared patch; v0.22.5 uses its own patch. After an upstream update, check whether your local changes were restored or left in a stash. If the update produced stock source, reapply the patch and rebuild Desktop; an upstream update does not itself install this enhancement. Do not copy the `source/` snapshot over a newer checkout.
 
-Download and extract the [release ZIP](https://github.com/himwithnoname-boop/Hermes-Agent-nousresearch-Multi-GPU-Patch/releases/latest). Finish jobs and close Hermes Desktop and its gateway, then open `installer/Install.cmd`. The installer prompts for the folder containing `hermes_cli/main.py`, checks compatibility, backs up source files locally and rebuilds Desktop without launching it. Start Hermes normally after success.
+Download and extract the [release ZIP](https://github.com/himwithnoname-boop/Hermes-Agent-nousresearch-Multi-GPU-Patch/releases/latest). Finish jobs and close Hermes Desktop and its gateway, then open `installer/Install.cmd`. The installer prompts for the folder containing `hermes_cli/main.py`, checks compatibility and applies source changes with local backups. It leaves the existing Desktop executable, packaged bundle and renderer untouched. Restart the gateway normally after success.
 
-The download contains source, tests and installer scripts. The engine, models and prebuilt Desktop application are supplied separately. Building may need network access for upstream dependencies.
+The download contains source, tests and installer scripts. The engine, models and prebuilt Desktop application are supplied separately. Optional Desktop UI builds are separate from installation.
 
 If you prefer to inspect and apply the changes yourself, use the complete [manual installation instructions](docs/INSTALL.md#manual-installation). Verify the extracted distribution with:
 
@@ -63,3 +63,5 @@ Licensed under [MIT](LICENSE), retaining upstream notices. Report reproducible p
 For a chat paused after a gateway restart, see [interrupted-chat recovery](docs/RECOVERY.md).
 
 The installer reads Windows gateway identity files with compatible file sharing, detects an already-applied patch, and creates a new backup when stock source has been restored by an update. Existing backups are retained. `-CheckOnly` is read-only and may inspect compatibility while Hermes is running; actual installation still requires a stopped runtime. Unknown upstream revisions are refused until validated.
+
+**Source patch only:** the installer never runs npm, installs dependencies, rebuilds Desktop, replaces Hermes.exe, or changes Windows security settings. Backend enhancements activate after restarting the gateway. Desktop-only visual changes are supplied as source and require a separate, explicitly chosen UI build or trusted publisher package.

@@ -1,0 +1,22 @@
+{
+  "status": "passed",
+  "cases": [
+    {
+      "case": "install",
+      "passed": true,
+      "exeUnchanged": true,
+      "desktopBundleUnchanged": true,
+      "rendererUnchanged": true
+    },
+    {
+      "case": "repeat",
+      "passed": true,
+      "exeUnchanged": true,
+      "desktopBundleUnchanged": true,
+      "rendererUnchanged": true
+    }
+  ],
+  "desktopBuildInvoked": false,
+  "dependencyInstallInvoked": false,
+  "windowsSecuritySettingsChanged": false
+}
